@@ -3,6 +3,8 @@ import Menu from "./Menu";
 import { MenuIcon, X } from "lucide-react";
 import { Link } from "react-router-dom";
 
+import logo from "../assets/logo.png";
+
 function Header() {
   const [open, setOpen] = useState(false);
   return (
@@ -11,7 +13,7 @@ function Header() {
         <div className="h-full max-w-[50%] md:max-w-[30%]">
           <Link to="/">
             <img
-              src="/src/assets/logo.png"
+              src={logo}
               alt="logo"
               className="h-full max-h-full w-auto object-contain drop-shadow-[0_-3px_3px_rgba(0,0,0,0.35)] md:ml-3 lg:ml-10"
             />
