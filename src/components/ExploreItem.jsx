@@ -1,11 +1,7 @@
 function ExploreItem({ file }) {
   return (
     <div>
-      <img
-        className="rounded-full"
-        src={`src/assets/icons/${file}.jpg`}
-        alt={`${file}`}
-      />
+      <img className="rounded-full" src={file} alt={`${file}`} />
     </div>
   );
 }

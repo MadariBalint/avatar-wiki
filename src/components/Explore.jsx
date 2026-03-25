@@ -3,6 +3,19 @@ import ExploreItem from "./ExploreItem";
 import Section from "./Section";
 import SectionHeading from "./SectionHeading";
 
+import avatarFaaLogo from "../assets/icons/avatar-faa-logo.jpg";
+import avatarLogo from "../assets/icons/avatar-logo.jpg";
+import avatarTwowLogo from "../assets/icons/avatar-twow-logo.jpg";
+import avatarsLogo from "../assets/icons/avatars-logo.jpg";
+import faunaLogo from "../assets/icons/fauna-logo.jpg";
+import floraLogo from "../assets/icons/flora-logo.jpg";
+import gamesLogo from "../assets/icons/games-logo.jpg";
+import gunLogo from "../assets/icons/gun-logo.jpg";
+import humanLogo from "../assets/icons/human-logo.jpg";
+import naviLogo from "../assets/icons/navi-logo.jpg";
+import rdaLogo from "../assets/icons/RDA-logo.jpg";
+import vehicleLogo from "../assets/icons/vehicle-logo.jpg";
+
 function Explore() {
   return (
     <>
@@ -10,40 +23,40 @@ function Explore() {
         <SectionHeading title={`Explore`} />
         <div className="grid grid-cols-6 justify-center justify-items-center gap-y-3 py-3 lg:grid-cols-[repeat(6,max-content)] lg:gap-x-3">
           <Link to="/category:avatar">
-            <ExploreItem file="avatar-logo" />
+            <ExploreItem file={avatarLogo} />
           </Link>
           <Link to="/category:avatar-twow">
-            <ExploreItem file="avatar-twow-logo" />
+            <ExploreItem file={avatarTwowLogo} />
           </Link>
           <Link to="/category:avatar-faa">
-            <ExploreItem file="avatar-faa-logo" />
+            <ExploreItem file={avatarFaaLogo} />
           </Link>
           <Link to="/category:games">
-            <ExploreItem file="games-logo" />
+            <ExploreItem file={gamesLogo} />
           </Link>
           <Link to="/category:avatars">
-            <ExploreItem file="avatars-logo" />
+            <ExploreItem file={avatarsLogo} />
           </Link>
           <Link to="/category:navi">
-            <ExploreItem file="navi-logo" />
+            <ExploreItem file={naviLogo} />
           </Link>
           <Link to="/category:humans">
-            <ExploreItem file="human-logo" />
+            <ExploreItem file={humanLogo} />
           </Link>
           <Link to="/category:flora">
-            <ExploreItem file="flora-logo" />
+            <ExploreItem file={floraLogo} />
           </Link>
           <Link to="/category:fauna">
-            <ExploreItem file="fauna-logo" />
+            <ExploreItem file={faunaLogo} />
           </Link>
           <Link to="/category:rda">
-            <ExploreItem file="RDA-logo" />
+            <ExploreItem file={rdaLogo} />
           </Link>
           <Link to="/category:vehicle">
-            <ExploreItem file="vehicle-logo" />
+            <ExploreItem file={vehicleLogo} />
           </Link>
           <Link to="/category:weapons">
-            <ExploreItem file="gun-logo" />
+            <ExploreItem file={gunLogo} />
           </Link>
         </div>
       </Section>
