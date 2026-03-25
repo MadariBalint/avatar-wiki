@@ -1,0 +1,5 @@
+_**James Cameron's Avatar: An Activist Survival Guide**_ is a book that describes the dangers of [[Pandora]]. It is presented like a field guide, and according to the back cover, is from the perspective of [[RDA]] researchers.
+
+The Activist Survival Guide is a companion "field guide" to the film _[[Avatar]]_. The book's original purpose was to fill in some of the gaps that the movie itself could not cover. Displayed as a confidential Resources Development Administration report, it describes in great detail everything from names and characteristics of the various flora and fauna of the Pandoran environment to the specifications of RDA technology and weaponry. 224 pages long, it is presented in full color and includes illustrations and pictures of the material.
+
+According to Joshua Izzo, this book was in the process of being phased out of canon. In December 2023, he clarified that the book is no longer canon. He mentioned that the development of the book was rushed out in order to give lore to the film.

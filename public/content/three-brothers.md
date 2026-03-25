@@ -1,0 +1,8 @@
+The **Three Brothers** are a collection of marine rock stacks located in the [[Eastern Sea]], not far from the village of [[Awa'atlu]].
+They are towering karst-like rock structures in a rounded formation and close proximity to one another. Together, they elicit a distinct profile. At their center is an underwater kelp bed that tracks their shoreline. The deepest area of water around them is approximately 100 feet.
+
+## History
+
+[[Lo'ak]] travels to the Three Brothers with [[Aonung]] and a few other Metkayina boys for hunting, even though he refused at first. On the backs of some [[ilu]], they arrive at the Three Brothers where they tell Lo'ak to hunt a fish and then secretly retreat as Aonung played a trick on him leaving Lo'ak alone in the Three Brothers as revenge. It turns out that these waters are inhabited by akula. One specimen, having smelled the blood of a hunted fish, tries to hunt down and eat Lo'ak. He hides among a formation of underwater kelp, but when he can no longer stay underwater and is about to be killed, a [[tulkun]] comes to his rescue by crushing and killing the hunting beast. Lo'ak thanks him for saving him and befriends [[Payakan]], who turns out to be a tulkun outcast and inhabits only the waters adjacent to the rocks.
+
+Sometime later, on the trail of Payakan, captain [[Mick Scoresby]]'s SeaDragon arrives at this place, from which Lo'ak and the other children who accompany him are forced to flee. Also under the Three Brothers, a battle takes place between the recombinants and the [[Metkayina Clan]], during which the SeaDragon is destroyed and several of its crew, the recombinants, and [[Neteyam]] are killed.

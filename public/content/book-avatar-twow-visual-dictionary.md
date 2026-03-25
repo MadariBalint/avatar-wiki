@@ -1,0 +1,1 @@
+_**Avatar: The Way of Water: The Visual Dictionary**_ is a tie-in book for _[[Avatar: The Way of Water]]_. It is similarly titled as _[[The World of Avatar: A Visual Exploration]]_, with similar content, and shares the same author.

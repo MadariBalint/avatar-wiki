@@ -1,0 +1,5 @@
+_**Avatar: The High Ground**_ is a three volume graphic novel series from Dark Horse Comics's Avatar comic line. It is set 14 years after the first film in the year 2168 and chronologically follows _[[Avatar: The Next Shadow]]_, and is followed by _[[Avatar: The Gap Year — Tipping Point]]_. The High Ground is set before _[[Avatar: The Way of Water]]_ and follows many of the characters introduced in the film such as [[Lo'ak]], [[Kiri]], [[Neteyam]] and [[Frances Ardmore]].
+
+It is based on an 130-page original screenplay by James Cameron which originally was planned to become the second film of the Avatar franchise.[1]
+
+The series is written by Sherri L. Smith. The series has different illustrators, giving the entire comic series a rather inconsistent art style. Volume 1 is illustrated by Guilherme Balbi, Michael Atiyeh, and Wes Dzioba. Volume 2 is illustrated by Diego Galindo, George Quadros, Gabriel Guzman, and DC Alonso. Volume 3 is illustrated by Agustin Padilla, Miguel Angel Ruiz, and Michael Atiyeh. The series has cover art by Doug Wheatley.

@@ -1,0 +1,1 @@
+**Yovo Fruit** is a purple, edible fruit found on [[Pandora]]. Yovo fruit grows in clusters, and the fruit itself is small enough to fit several of them onto the palm of [[Na'vi hand]]. It has a scaly texture and a purple interior filled with black seeds.

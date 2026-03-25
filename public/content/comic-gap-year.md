@@ -1,0 +1,1 @@
+_**Avatar: The Gap Year — Tipping Point**_ is a six-issue comic series from Dark Horse Comics's Avatar comic line. The first issue was published on October 22, 2025. The sixth and final issue will be released on April 1, 2026.

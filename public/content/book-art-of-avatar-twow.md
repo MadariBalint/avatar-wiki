@@ -1,0 +1,1 @@
+_**The Art of Avatar: The Way of Water**_ is a tie-in book written by Tara Bennett for _[[Avatar: The Way of Water]]_. It is similar to The Art of Avatar: James Cameron's Epic Adventure, created for the first film. The book contains a foreword written by Robert Rodriguez, whom James Cameron had previously collaborated with.

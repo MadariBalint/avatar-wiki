@@ -1,0 +1,2 @@
+**Spineberry Fruit** is the fruit of an epiphytic flower that grows at the base of the [[flamingo orchid]], benefitting from the larger plant's defensive adaptations. This fruit is coveted for its nourishing properties and distinctive flavor.
+Spineberry fruit is a multi-fruit; formed of a cluster of fruiting flowers. Beneath its drier outer bracts is a sweet and sticky flesh which [[Na'vi]] can eat raw or cooked.
