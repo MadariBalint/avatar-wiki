@@ -6,8 +6,10 @@ function CharacterInfoBoxRow({ label, info, renderInfo }) {
       : false;
 
   return (
-    <div className="grid grid-cols-2">
-      <div>{label}</div>
+    <div className="grid grid-cols-2  ">
+      <div >{label}</div>
+      <div className="min-w-0 break-words">
+
       {renderInfo ? (
         <ul className={isList ? "list-disc pl-5" : "list-none"}>
           {renderInfo(info)}
@@ -21,6 +23,7 @@ function CharacterInfoBoxRow({ label, info, renderInfo }) {
       ) : (
         <span>{info}</span>
       )}
+      </div>
     </div>
   );
 }

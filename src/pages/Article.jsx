@@ -89,8 +89,8 @@ function Article() {
 
   const infoData = allData.find((item) => item.id === slug);
   return (
-    <div className="lg:mx-auto lg:max-w-5xl">
-      <div className="float-right mb-10 ml-10 font-[verdana]">
+    <div className="flex flex-col lg:block lg:mx-auto lg:max-w-5xl">
+      <div className="lg:float-right mb-10 ml-10 font-[verdana]">
         {infoData?.articleType === "franchise" && (
           <FranchiseInfoBox data={infoData} />
         )}

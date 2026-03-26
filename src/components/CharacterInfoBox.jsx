@@ -14,8 +14,8 @@ import {
 function CharacterInfoBox({ data = null }) {
   if (!data) return null;
   return (
-    <aside className="w-72 overflow-auto">
-      <div className="flex justify-center text-xl mt-2 mb-1 border p-2 rounded-2xl border-sky-600 bg-sky-800/40">
+    <aside className="w-80 flex flex-col items-center">
+      <div className="flex w-full justify-center text-xl mt-2 mb-1 border p-2 rounded-2xl border-sky-600 bg-sky-800/40">
         <h2>{data.name}</h2>
       </div>
       <div>
@@ -144,7 +144,7 @@ function CharacterInfoBox({ data = null }) {
           <CharacterInfoBoxRow label={"Bonded with"} info={data.bondedWith} />
         )}
         </div>
-    <div className="flex justify-center text-lg bg-sky-700/30 " >Behindd The Scenes</div>
+    <div className="flex justify-center text-lg bg-sky-700/30 " >Behind The Scenes</div>
     <div className="divide-y-1 divide-sky-400 space-y-2 ">
         {data.portrayedBy && (
           <CharacterInfoBoxRow label={"Portrayed by"} info={data.portrayedBy} />
