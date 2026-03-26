@@ -2,42 +2,45 @@ import FranchiseInfoBoxRow from "./FranchiseInfoBoxRow";
 
 function FranchiseInfoBox({ data = null }) {
   return (
-    <aside className="w-72">
-      <div>
-        <h2 className="flex justify-center text-xl mt-2 mb-2">{data.title}</h2>
+    <aside className="w-72 overflow-auto">
+      <div className="flex justify-center text-xl mt-2 mb-1 border p-2 rounded-2xl border-sky-600 bg-sky-800/40">
+        <h2 >{data.title}</h2>
       </div>
       <div>
         <img
+        className="rounded-2xl"
           src={`/images/franchise/${data.type}/${data.id}-poster.png`}
           alt={`${data.id}-poster`}
         />
       </div>
-      <div className="flex justify-center text-lg">Information</div>
-      <div>
+      <div className="border-2  border-sky-400 rounded-2xl mt-1 p-2 divid-solid divide-y-2 divide-sky-400">
+
+      <div className="flex justify-center text-lg bg-sky-700/30 rounded-t-xl ">Information</div>
+      <div className="divide-y-1 divide-sky-400 space-y-2 " >
         {/* {Object.entries(data).map((el, i) =>
           el[0] !== "id" ? (
             <div key={i} className="grid grid-cols-2">
               <div className="capitalize">{el[0]}</div>
               <div className="flex flex-col">
-                {typeof el[1] === "object" ? (
-                  el[1].map((item, i) => (
-                    <div
+              {typeof el[1] === "object" ? (
+                el[1].map((item, i) => (
+                  <div
                       key={`${data.id}${el[0]}${i}`}
                       data-id={`${data.id}${el[0]}${i}`}
-                    >
+                      >
                       {el[1].length > 1 && <span>&bull;</span>}
                       {item}
-                    </div>
-                  ))
-                ) : (
+                      </div>
+                      ))
+                      ) : (
                   <div>{el[1]}</div>
-                )}
-              </div>
+                  )}
+                  </div>
             </div>
-          ) : (
-            ""
-          )
-        )} */}
+            ) : (
+              ""
+              )
+              )} */}
         {/* director,producer,writer,actors,composer,studio,runtime is for movies */}
         {data.director && (
           <FranchiseInfoBoxRow label={"Director"} info={data.director} />
@@ -93,14 +96,15 @@ function FranchiseInfoBox({ data = null }) {
         )}
         {data["release-date"] && (
           <FranchiseInfoBoxRow
-            label={"Release date"}
-            info={data["release-date"]}
+          label={"Release date"}
+          info={data["release-date"]}
           />
         )}
         {data.release && (
           <FranchiseInfoBoxRow label={"Release date"} info={data.release} />
         )}
       </div>
+        </div>
     </aside>
   );
 }
