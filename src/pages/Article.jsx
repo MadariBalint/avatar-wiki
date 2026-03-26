@@ -14,6 +14,7 @@ import { useEffect, useMemo, useState } from "react";
 import { buildWikiIndex } from "../utils/wikiIndex";
 import { resolveWikiLinks } from "../utils/resolveWikiLinks";
 import MarkdownRenderer from "../components/MarkdownRenderer";
+import Spinner from "../components/Spinner";
 
 const allData = [
   ...franchise.map((item) => ({ ...item, articleType: "franchise" })),
@@ -75,11 +76,13 @@ function Article() {
   }, [slug]);
 
   if (loading) {
-    return <div>Loading...</div>;
+    return <div className="flex justify-center text-6xl mt-10 font-[PapyrusWeb] gap-3">
+      <Spinner />
+      <span>Loading...</span></div>;
   }
 
   if (notFound) {
-    return <div>404 - Article not found</div>;
+    return <div className="flex justify-center text-6xl mt-10 font-[PapyrusWeb]"><span>404 - Article not found</span></div>;
   }
 
   const resolvedMarkdown = resolveWikiLinks(rawMarkdown, wikiIndex);
