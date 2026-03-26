@@ -4,7 +4,7 @@ function FranchiseInfoBox({ data = null }) {
   return (
     <aside className="w-72">
       <div>
-        <h2>{data.title}</h2>
+        <h2 className="flex justify-center text-xl mt-2 mb-2">{data.title}</h2>
       </div>
       <div>
         <img
@@ -12,7 +12,7 @@ function FranchiseInfoBox({ data = null }) {
           alt={`${data.id}-poster`}
         />
       </div>
-      <div>Information</div>
+      <div className="flex justify-center text-lg">Information</div>
       <div>
         {/* {Object.entries(data).map((el, i) =>
           el[0] !== "id" ? (

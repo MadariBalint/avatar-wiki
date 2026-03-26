@@ -6,7 +6,7 @@ function Menu() {
       <Link to="/">Home</Link>
       <Link to="/category:characters">Characters</Link>
       <Link to="/category:navi">Na'vi</Link>
-      <Link to="/categor:rda">RDA</Link>
+      <Link to="/category:rda">RDA</Link>
       <Link to="/category:flora">Flora</Link>
       <Link to="/category:fauna">Fauna</Link>
     </nav>
