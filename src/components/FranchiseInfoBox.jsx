@@ -2,8 +2,8 @@ import FranchiseInfoBoxRow from "./FranchiseInfoBoxRow";
 
 function FranchiseInfoBox({ data = null }) {
   return (
-    <aside className="w-80 flex flex-col items-center">
-      <div className="flex justify-center text-xl mt-2 mb-1 border p-2 rounded-2xl border-sky-600 bg-sky-800/40">
+    <aside className="w-88 md:w-72 lg:w-80 flex flex-col items-center">
+      <div className="flex w-full justify-center text-xl mt-2 mb-1 border p-2 rounded-2xl border-sky-600 bg-sky-800/40">
         <h2 >{data.title}</h2>
       </div>
       <div>

@@ -15,14 +15,14 @@ function MarkdownLink({ href = "", children, ...props }) {
 
   if (isExternal || isSpecial) {
     return (
-      <a href={href} {...props}>
+      <a className="text-sky-600" href={href} {...props}>
         {children}
       </a>
     );
   }
 
   return (
-    <Link to={href} {...props}>
+    <Link className="text-sky-600" to={href} {...props}>
       {children}
     </Link>
   );

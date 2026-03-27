@@ -89,8 +89,8 @@ function Article() {
 
   const infoData = allData.find((item) => item.id === slug);
   return (
-    <div className="flex flex-col lg:block lg:mx-auto lg:max-w-5xl">
-      <div className="flex justify-center lg:float-right mb-10 lg:ml-10 font-[verdana]">
+    <div className="flex flex-col md:block md:mx-auto md:max-w-3xl lg:max-w-5xl">
+      <div className="flex justify-center md:float-right mb-10 md:ml-5 lg:md-10 font-[verdana]">
         {infoData?.articleType === "franchise" && (
           <FranchiseInfoBox data={infoData} />
         )}
@@ -98,7 +98,7 @@ function Article() {
           <CharacterInfoBox data={infoData} />
         )}
       </div>
-      <div className="px-10">
+      <div className="px-10 md:pt-1 md:px-0">
         <MarkdownRenderer content={resolvedMarkdown} />
       </div>
     </div>
