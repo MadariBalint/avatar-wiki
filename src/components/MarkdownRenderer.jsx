@@ -36,10 +36,13 @@ function MarkdownRenderer({ content }) {
         components={{
           a: MarkdownLink,
           table: (props) => (
+            <div className="w-full overflow-x-auto">
+
             <table
-              className="w-full table-auto border border-sky-600"
+              className="w-full table-auto border border-sky-600 "
               {...props}
-            />
+              />
+              </div>
           ),
           thead: (props) => <thead className="bg-sky-300" {...props} />,
           th: (props) => (
