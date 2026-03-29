@@ -22,11 +22,39 @@ import { useMemo } from "react";
 const allData = [
   ...franchise.map((item) => ({ ...item, articleType: "franchise" })),
   ...affiliations.map((item) => ({ ...item, articleType: "affiliation" })),
-  ...characters.map((item) => ({ ...item, articleType: "character" })),
+  ...characters.map((item) => ({ ...item, articleType: "characters" })),
   ...fauna.map((item) => ({ ...item, articleType: "fauna" })),
   ...flora.map((item) => ({ ...item, articleType: "flora" })),
   ...locations.map((item) => ({ ...item, articleType: "location" })),
   ...rda.map((item) => ({ ...item, articleType: "rda" })),
+];
+const alphabet = [
+  "A",
+  "B",
+  "C",
+  "D",
+  "E",
+  "F",
+  "G",
+  "H",
+  "I",
+  "J",
+  "K",
+  "L",
+  "M",
+  "N",
+  "O",
+  "P",
+  "Q",
+  "R",
+  "S",
+  "T",
+  "U",
+  "V",
+  "W",
+  "X",
+  "Y",
+  "Z",
 ];
 
 function App() {
@@ -40,11 +68,17 @@ function App() {
           element={<Article allData={allData} wikiIndex={wikiIndex} />}
         />
         <Route path="/" element={<Home />} />
-        <Route path="/category:characters" element={<Characters />} />
-        <Route path="/category:navi" element={<Navi />} />
-        <Route path="/category:rda" element={<Rda />} />
-        <Route path="/category:flora" element={<Flora />} />
-        <Route path="/category:fauna" element={<Fauna />} />
+        <Route
+          path="/category:characters"
+          element={<Characters ABC={alphabet} />}
+        />
+        <Route path="/category:navi" element={<Navi ABC={alphabet} />} />
+        <Route
+          path="/category:rda"
+          element={<Rda ABC={alphabet} allData={allData} />}
+        />
+        <Route path="/category:flora" element={<Flora ABC={alphabet} />} />
+        <Route path="/category:fauna" element={<Fauna ABC={alphabet} />} />
       </Routes>
     </>
   );

@@ -2,36 +2,7 @@ import { Link } from "react-router-dom";
 import CategoryBox from "../components/CategoryBox";
 import characters from "../data/characters.json";
 
-const alphabet = [
-  "A",
-  "B",
-  "C",
-  "D",
-  "E",
-  "F",
-  "G",
-  "H",
-  "I",
-  "J",
-  "K",
-  "L",
-  "M",
-  "N",
-  "O",
-  "P",
-  "Q",
-  "R",
-  "S",
-  "T",
-  "U",
-  "V",
-  "W",
-  "X",
-  "Y",
-  "Z",
-];
-
-function Characters() {
+function Characters({ ABC }) {
   const data = characters.map((item) => item);
 
   return (
@@ -52,7 +23,7 @@ function Characters() {
         </div>
       </div>
       <div className="mx-auto mt-10 max-w-sm columns-2 rounded-xl bg-sky-900/20 px-7 py-10 md:max-w-md md:px-15 lg:max-w-xl xl:max-w-3xl">
-        {alphabet.map((letter) => {
+        {ABC.map((letter) => {
           let arr = data.filter((x) => x.name.toUpperCase().startsWith(letter));
           if (arr.length < 1) return;
           if (arr.find((el) => el.hasPage) === undefined) return;
@@ -65,7 +36,7 @@ function Characters() {
                     <div className="flex items-center" key={el.id}>
                       {el.hasPage && (
                         <img
-                          className="h-12 w-8 object-contain"
+                          className="h-12 w-12 object-contain"
                           src={`/images/characters/${el.id}-face.png`}
                           alt=""
                         />

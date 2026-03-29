@@ -80,7 +80,7 @@ function Article({ allData, wikiIndex }) {
         {infoData?.articleType === "franchise" && (
           <FranchiseInfoBox data={infoData} />
         )}
-        {infoData?.articleType === "character" && (
+        {infoData?.articleType === "characters" && (
           <CharacterInfoBox data={infoData} />
         )}
       </div>
