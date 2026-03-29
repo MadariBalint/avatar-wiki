@@ -1,38 +1,17 @@
 import { useParams } from "react-router-dom";
 
-import franchise from "../data/franchise.json";
-import affiliations from "../data/affiliations.json";
-import characters from "../data/characters.json";
-import fauna from "../data/fauna.json";
-import flora from "../data/flora.json";
-import locations from "../data/locations.json";
-import rda from "../data/rda.json";
-
 import FranchiseInfoBox from "../components/FranchiseInfoBox";
 import CharacterInfoBox from "../components/CharacterInfoBox";
-import { useEffect, useMemo, useState } from "react";
-import { buildWikiIndex } from "../utils/wikiIndex";
+import { useEffect, useState } from "react";
 import { resolveWikiLinks } from "../utils/resolveWikiLinks";
 import MarkdownRenderer from "../components/MarkdownRenderer";
 import Spinner from "../components/Spinner";
 
-const allData = [
-  ...franchise.map((item) => ({ ...item, articleType: "franchise" })),
-  ...affiliations.map((item) => ({ ...item, articleType: "affiliation" })),
-  ...characters.map((item) => ({ ...item, articleType: "character" })),
-  ...fauna.map((item) => ({ ...item, articleType: "fauna" })),
-  ...flora.map((item) => ({ ...item, articleType: "flora" })),
-  ...locations.map((item) => ({ ...item, articleType: "location" })),
-  ...rda.map((item) => ({ ...item, articleType: "rda" })),
-];
-
-function Article() {
+function Article({ allData, wikiIndex }) {
   const { slug } = useParams();
   const [rawMarkdown, setRawMarkdown] = useState("");
   const [loading, setLoading] = useState(true);
   const [notFound, setNotFound] = useState(false);
-
-  const wikiIndex = useMemo(() => buildWikiIndex(allData), []);
 
   useEffect(() => {
     let isCancelled = false;
@@ -76,21 +55,28 @@ function Article() {
   }, [slug]);
 
   if (loading) {
-    return <div className="flex justify-center text-6xl mt-10 font-[PapyrusWeb] gap-3">
-      <Spinner />
-      <span>Loading...</span></div>;
+    return (
+      <div className="mt-10 flex justify-center gap-3 font-[PapyrusWeb] text-6xl">
+        <Spinner />
+        <span>Loading...</span>
+      </div>
+    );
   }
 
   if (notFound) {
-    return <div className="flex justify-center text-6xl mt-10 font-[PapyrusWeb]"><span>404 - Article not found</span></div>;
+    return (
+      <div className="mt-10 flex justify-center font-[PapyrusWeb] text-6xl">
+        <span>404 - Article not found</span>
+      </div>
+    );
   }
-
+  console.log(wikiIndex);
   const resolvedMarkdown = resolveWikiLinks(rawMarkdown, wikiIndex);
 
   const infoData = allData.find((item) => item.id === slug);
   return (
-    <div className="flex flex-col md:block md:mx-auto md:max-w-3xl lg:max-w-5xl">
-      <div className="flex justify-center md:float-right mb-10 md:ml-5 lg:md-10 font-[verdana]">
+    <div className="flex flex-col md:mx-auto md:block md:max-w-3xl lg:max-w-5xl">
+      <div className="lg:md-10 mb-10 flex justify-center font-[verdana] md:float-right md:ml-5">
         {infoData?.articleType === "franchise" && (
           <FranchiseInfoBox data={infoData} />
         )}
@@ -98,7 +84,7 @@ function Article() {
           <CharacterInfoBox data={infoData} />
         )}
       </div>
-      <div className="px-10 md:pt-1 md:px-0">
+      <div className="px-10 md:px-0 md:pt-1">
         <MarkdownRenderer content={resolvedMarkdown} />
       </div>
     </div>

@@ -27,7 +27,10 @@ function FeaturedCharacters() {
           <FeaturedCharactersItem file="spider-face" name="Spider" />
         </Link>
         <Link to="/miles-quaritch" className="md:col-span-2 lg:col-span-4">
-          <FeaturedCharactersItem file="quaritch-face" name="Miles Quaritch" />
+          <FeaturedCharactersItem
+            file="miles-quaritch-face"
+            name="Miles Quaritch"
+          />
         </Link>
         <Link to="/varang" className="md:col-span-2 lg:col-span-4">
           <FeaturedCharactersItem file="varang-face" name="Varang" />
