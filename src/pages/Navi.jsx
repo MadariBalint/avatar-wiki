@@ -8,7 +8,7 @@ function Navi({ ABC }) {
     <div>
       <div className="flex flex-col items-center gap-10">
         <span className="text-center font-[PapyrusWeb] text-3xl md:text-4xl lg:text-5xl">
-          The "People" a.k.a Na'vi
+          The "People" a.k.a the Na'vi
         </span>
         <div className="flex max-w-sm flex-wrap justify-center gap-2 md:max-w-lg md:gap-4 lg:max-w-3xl lg:gap-x-10 lg:gap-y-10 xl:max-w-5xl xl:gap-x-15 xl:gap-y-15">
           {data.map(
