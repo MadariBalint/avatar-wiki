@@ -38,22 +38,23 @@ function Navi({ ABC }) {
               <div className="ml-5 flex flex-col gap-1 md:ml-10">
                 {arr.map((el) => {
                   return (
-                    <div className="flex items-center" key={el.id}>
-                      {el.hasPage &&
-                        el.speciesIds?.find((el) => el === "navi") && (
-                          <img
-                            className="h-12 w-12 object-contain"
-                            src={`/images/characters/${el.id}-face.png`}
-                            alt=""
-                          />
-                        )}
+                    el.hasPage && el.speciesIds?.find((el) => el === "navi") &&
+                    <div className="grid grid-cols-4 items-center" key={el.id}>
 
-                      {el.hasPage &&
-                        el.speciesIds?.find((el) => el === "navi") && (
-                          <Link to={`/${el.id}`}>
-                            <div className="ml-2">{el.name}</div>
-                          </Link>
-                        )}
+
+                      <img
+                        className="h-12 w-12 object-contain col-start-1"
+                        src={`/images/characters/${el.id}-face.png`}
+                        alt=""
+                      />
+
+
+
+                      <div className="ml-2 col-start-2 col-span-full">
+                        <Link to={`/${el.id}`}>
+                          {el.name}
+                        </Link>
+                        </div>
                     </div>
                   );
                 })}

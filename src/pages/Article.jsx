@@ -70,7 +70,6 @@ function Article({ allData, wikiIndex }) {
       </div>
     );
   }
-  console.log(wikiIndex);
   const resolvedMarkdown = resolveWikiLinks(rawMarkdown, wikiIndex);
 
   const infoData = allData.find((item) => item.id === slug);

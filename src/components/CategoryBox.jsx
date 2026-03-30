@@ -8,11 +8,11 @@ function CategoryBox({ identity, category }) {
           alt={`${identity.id} photo`}
         />
       </div>
-      {category === "characters" && <span>{identity.name}</span>}
+      {category === "characters" && identity.name}
       {category === "franchise" && identity.title}
       {category === "rda" && identity.name}
-      {category === "flora" && identity.humanName}
-      {category === "fauna" && identity.humanName}
+      {category === "flora" && (identity.humanName || identity.naviName)}
+      {category === "fauna" && (identity.humanName || identity.naviName)}
     </div>
   );
 }

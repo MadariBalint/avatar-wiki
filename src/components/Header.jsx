@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Menu from "./Menu";
 import { MenuIcon, X } from "lucide-react";
 import { Link } from "react-router-dom";
@@ -7,6 +7,24 @@ import logo from "../assets/logo.png";
 
 function Header() {
   const [open, setOpen] = useState(false);
+  const menuRef = useRef(null)
+
+  useEffect(()=> {
+    function handleClickOutside(event) {
+      if(menuRef.current && !menuRef.current.contains(event.target)) {
+        setOpen(false)
+      }
+    }
+
+    if(open) {
+      document.addEventListener("mousedown", handleClickOutside)
+      
+    }
+
+    return ()=> {
+      document.removeEventListener("mousedown", handleClickOutside)
+    }
+  }, [open])
   return (
     <>
       <div className="flex h-[10rem] flex-row items-center justify-between">
@@ -21,7 +39,7 @@ function Header() {
         </div>
         <button
           className="mr-12 ml-auto md:hidden"
-          onClick={() => setOpen(!open)}
+          onClick={() => setOpen(prev => !prev)}
         >
           {open ? <X /> : <MenuIcon />}
         </button>
@@ -30,7 +48,11 @@ function Header() {
           <Menu />
         </div>
       </div>
-      {open === true && <Menu />}
+      {open && 
+      <div ref={menuRef}>
+        <Menu  closeMenu={()=> setOpen(false)} />
+      </div>
+      }
     </>
   );
 }
