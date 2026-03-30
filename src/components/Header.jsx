@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import Menu from "./Menu";
 import { MenuIcon, X } from "lucide-react";
 import { Link } from "react-router-dom";
+import useLockBodyScroll from "../utils/useLockBodyScroll"
 
 import logo from "../assets/logo.png";
 
@@ -9,22 +10,27 @@ function Header() {
   const [open, setOpen] = useState(false);
   const menuRef = useRef(null)
 
-  useEffect(()=> {
+
+
+  useEffect(() => {
     function handleClickOutside(event) {
-      if(menuRef.current && !menuRef.current.contains(event.target)) {
+      if (menuRef.current && !menuRef.current.contains(event.target)) {
         setOpen(false)
       }
     }
 
-    if(open) {
+    if (open) {
       document.addEventListener("mousedown", handleClickOutside)
-      
+
     }
 
-    return ()=> {
+    return () => {
       document.removeEventListener("mousedown", handleClickOutside)
     }
   }, [open])
+  useLockBodyScroll(open)
+
+
   return (
     <>
       <div className="flex h-[10rem] flex-row items-center justify-between">
@@ -48,10 +54,10 @@ function Header() {
           <Menu />
         </div>
       </div>
-      {open && 
-      <div ref={menuRef}>
-        <Menu  closeMenu={()=> setOpen(false)} />
-      </div>
+      {open &&
+        <div ref={menuRef}>
+          <Menu closeMenu={() => setOpen(false)} />
+        </div>
       }
     </>
   );
