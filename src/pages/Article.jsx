@@ -6,6 +6,7 @@ import { useEffect, useState } from "react";
 import { resolveWikiLinks } from "../utils/resolveWikiLinks";
 import MarkdownRenderer from "../components/MarkdownRenderer";
 import Spinner from "../components/Spinner";
+import FaunaInfoBox from "../components/FaunaInfoBox";
 
 function Article({ allData, wikiIndex }) {
   const { slug } = useParams();
@@ -82,6 +83,7 @@ function Article({ allData, wikiIndex }) {
         {infoData?.articleType === "characters" && (
           <CharacterInfoBox data={infoData} />
         )}
+        {infoData?.articleType === "fauna" && <FaunaInfoBox data={infoData} />}
       </div>
       <div className="px-10 md:px-0 md:pt-1">
         <MarkdownRenderer content={resolvedMarkdown} />

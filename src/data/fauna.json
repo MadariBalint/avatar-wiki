@@ -49,8 +49,7 @@
     "habitat": ["rainforests"],
     "length": {
       "exact": "45 cm",
-      "across": "1 meter",
-      "across-note": "when unfurled"
+      "across": "1 meter"
     },
     "skinColor": "brown-yellow",
     "firstSeen": "avatar",

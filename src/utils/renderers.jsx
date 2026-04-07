@@ -132,3 +132,73 @@ export function renderAffiliation(aff) {
 export function renderSeen(seen) {
   return <li>{franchise.find((e) => e.id === seen).title}</li>;
 }
+
+export function renderHabitat(habitat) {
+  return habitat.map((hab) => (
+    <li key={hab}>
+      {locations.some((entry) => entry.id === hab)
+        ? locations.find((e) => e.id === hab).name
+        : hab}
+    </li>
+  ));
+}
+
+export function renderLengthFauna(length) {
+  return Object.entries(length).map(([type, unit], i) => {
+    return (
+      <li key={i}>
+        {type === "approx" && <span>~</span>}
+        <span>{unit}</span>
+      </li>
+    );
+  });
+}
+export function renderHeightFauna(height) {
+  return Object.entries(height).map(([type, unit], i) => {
+    return (
+      <li key={i}>
+        {type === "approx" && <span>~</span>}
+        <span>{unit}</span>
+      </li>
+    );
+  });
+}
+export function renderWidthFauna(width) {
+  return Object.entries(width).map(([type, unit], i) => {
+    return (
+      <li key={i}>
+        {type === "approx" && <span>~</span>}
+        <span>{unit}</span>
+      </li>
+    );
+  });
+}
+
+export function renderWeightFauna(weight) {
+  return Object.entries(weight).map(([type, unit], i) => {
+    return (
+      <li key={i}>
+        {type === "average" && <span>Average adult: </span>}
+        {type === "max" && <span>Max observed: </span>}
+        <span>{unit}</span>
+      </li>
+    );
+  });
+}
+
+export function renderColorFauna(color) {
+  const text = color.split("-").map((x) => x[0].toUpperCase() + x.slice(1));
+
+  return <li>{text.join(" - ")}</li>;
+}
+
+export function renderEyeColorFauna(color) {
+  return (
+    <li>{color.map((x) => x[0].toUpperCase() + x.slice(1)).join(" - ")}</li>
+  );
+}
+export function renderHairColorFauna(color) {
+  return (
+    <li>{color.map((x) => x[0].toUpperCase() + x.slice(1)).join(" - ")}</li>
+  );
+}
