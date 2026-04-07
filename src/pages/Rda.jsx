@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import CategoryBox from "../components/CategoryBox";
-import { useEffect, useState } from "react";
+import { useMemo } from "react";
 
 function Rda({ allData, ABC }) {
   const data = allData.filter(
@@ -10,15 +10,11 @@ function Rda({ allData, ABC }) {
       e.residentIds?.filter((el) => el === "rda" || el === "human").length > 0
   );
 
-  const [selectedData, setSelectedData] = useState([]);
-
-  useEffect(() => {
-    if (!data || data.length === 0) return;
-    const shuffled = [...data].sort(() => 0.5 - Math.random());
-    const result = data.length <= 8 ? data : shuffled.slice(0, 8);
-
-    setSelectedData(result);
-  }, []);
+  const selectedData = useMemo(() => {
+    if (!data.length) return [];
+    const shuffled = [...data].sort(() => Math.random() - 0.5);
+    return data.length <= 8 ? data : shuffled.slice(0, 8);
+  }, [data]);
 
   return (
     <div>
@@ -48,24 +44,22 @@ function Rda({ allData, ABC }) {
               <div className="ml-5 flex flex-col gap-1 md:ml-10">
                 {arr.map((el) => {
                   return (
-                    el.hasPage &&
-                    <div className="grid grid-cols-4 items-center" key={el.id}>
+                    el.hasPage && (
+                      <div
+                        className="grid grid-cols-4 items-center"
+                        key={el.id}
+                      >
+                        <img
+                          className="col-start-1 h-12 w-12 object-contain"
+                          src={`/images/${el.articleType}/${el.articleType === "franchise" ? `${el.type}/` : ""}${el.id}${el.articleType === "characters" ? "-face" : ""}.png`}
+                          alt=""
+                        />
 
-                      <img
-                        className="h-12 w-12 object-contain col-start-1"
-                        src={`/images/${el.articleType}/${el.articleType === "franchise" ? `${el.type}/` : ""}${el.id}${el.articleType === "characters" ? "-face" : ""}.png`}
-                        alt=""
-                      />
-
-
-
-                      <div className="ml-2 col-start-2 col-span-full">
-                        <Link to={`/${el.id}`}>
-                          {el.name}
-                        </Link>
+                        <div className="col-span-full col-start-2 ml-2">
+                          <Link to={`/${el.id}`}>{el.name}</Link>
+                        </div>
                       </div>
-
-                    </div>
+                    )
                   );
                 })}
               </div>

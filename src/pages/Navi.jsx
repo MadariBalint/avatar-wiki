@@ -1,9 +1,50 @@
 import { Link } from "react-router-dom";
-import characters from "../data/characters.json";
 import CategoryBox from "../components/CategoryBox";
+import { useEffect, useMemo, useState } from "react";
+import Spinner from "../components/Spinner";
 
 function Navi({ ABC }) {
-  const data = characters.map((item) => item);
+  const [data, setData] = useState([]);
+
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    async function loadNavi() {
+      setLoading(true);
+      try {
+        const res = await fetch("data/characters.json");
+        let response = await res.json();
+
+        response = response.filter((x) =>
+          x.speciesIds?.find((el) => el === "navi")
+        );
+
+        setData(response);
+      } catch (err) {
+        console.error("Failed to load fauna", err);
+      } finally {
+        setLoading(false);
+      }
+    }
+
+    loadNavi();
+  }, []);
+
+  const selectedData = useMemo(() => {
+    if (!data.length) return [];
+    const shuffled = [...data].sort(() => Math.random() - 0.5);
+    return data.length <= 8 ? data : shuffled.slice(0, 8);
+  }, [data]);
+
+  if (loading) {
+    return (
+      <div className="mt-10 flex justify-center gap-3 font-[PapyrusWeb] text-6xl">
+        <Spinner />
+        <span>Loading...</span>
+      </div>
+    );
+  }
+
   return (
     <div>
       <div className="flex flex-col items-center gap-10">
@@ -11,7 +52,7 @@ function Navi({ ABC }) {
           The "People" a.k.a the Na'vi
         </span>
         <div className="flex max-w-sm flex-wrap justify-center gap-2 md:max-w-lg md:gap-4 lg:max-w-3xl lg:gap-x-10 lg:gap-y-10 xl:max-w-5xl xl:gap-x-15 xl:gap-y-15">
-          {data.map(
+          {selectedData.map(
             (el) =>
               el.hasPage &&
               el.speciesIds?.find((el) => el === "navi") && (
@@ -38,24 +79,23 @@ function Navi({ ABC }) {
               <div className="ml-5 flex flex-col gap-1 md:ml-10">
                 {arr.map((el) => {
                   return (
-                    el.hasPage && el.speciesIds?.find((el) => el === "navi") &&
-                    <div className="grid grid-cols-4 items-center" key={el.id}>
+                    el.hasPage &&
+                    el.speciesIds?.find((el) => el === "navi") && (
+                      <div
+                        className="grid grid-cols-4 items-center"
+                        key={el.id}
+                      >
+                        <img
+                          className="col-start-1 h-12 w-12 object-contain"
+                          src={`/images/characters/${el.id}-face.png`}
+                          alt=""
+                        />
 
-
-                      <img
-                        className="h-12 w-12 object-contain col-start-1"
-                        src={`/images/characters/${el.id}-face.png`}
-                        alt=""
-                      />
-
-
-
-                      <div className="ml-2 col-start-2 col-span-full">
-                        <Link to={`/${el.id}`}>
-                          {el.name}
-                        </Link>
+                        <div className="col-span-full col-start-2 ml-2">
+                          <Link to={`/${el.id}`}>{el.name}</Link>
                         </div>
-                    </div>
+                      </div>
+                    )
                   );
                 })}
               </div>

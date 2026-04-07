@@ -1,9 +1,45 @@
 import { Link } from "react-router-dom";
-import fauna from "../data/fauna.json";
 import CategoryBox from "../components/CategoryBox";
+import { useEffect, useMemo, useState } from "react";
+import Spinner from "../components/Spinner";
 
 function Fauna({ ABC }) {
-  const data = fauna.map((item) => item);
+  const [fauna, setFauna] = useState([]);
+
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    async function loadFauna() {
+      setLoading(true);
+      try {
+        const res = await fetch("data/fauna.json");
+        const response = await res.json();
+
+        setFauna(response);
+      } catch (err) {
+        console.error("Failed to load fauna", err);
+      } finally {
+        setLoading(false);
+      }
+    }
+
+    loadFauna();
+  }, []);
+
+  const selectedData = useMemo(() => {
+    if (!fauna.length) return [];
+    const shuffled = [...fauna].sort(() => Math.random() - 0.5);
+    return fauna.length <= 8 ? fauna : shuffled.slice(0, 8);
+  }, [fauna]);
+
+  if (loading) {
+    return (
+      <div className="mt-10 flex justify-center gap-3 font-[PapyrusWeb] text-6xl">
+        <Spinner />
+        <span>Loading...</span>
+      </div>
+    );
+  }
 
   return (
     <div>
@@ -12,7 +48,7 @@ function Fauna({ ABC }) {
           Fauna of Pandora
         </span>
         <div className="flex max-w-sm flex-wrap justify-center gap-2 md:max-w-lg md:gap-4 lg:max-w-3xl lg:gap-x-10 lg:gap-y-10 xl:max-w-5xl xl:gap-x-15 xl:gap-y-15">
-          {data.map(
+          {selectedData.map(
             (el) =>
               el.hasPage && (
                 <Link key={el.id} to={`/${el.id}`}>
@@ -25,7 +61,7 @@ function Fauna({ ABC }) {
       ;
       <div className="mx-auto mt-10 max-w-sm columns-2 rounded-xl bg-sky-900/20 px-7 py-10 md:max-w-md md:px-15 lg:max-w-xl xl:max-w-3xl">
         {ABC.map((letter) => {
-          let arr = data.filter(
+          let arr = fauna.filter(
             (x) =>
               x.humanName?.toUpperCase().startsWith(letter) ||
               x.naviName?.toUpperCase().startsWith(letter)
