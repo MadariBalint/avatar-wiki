@@ -72,7 +72,7 @@ function Article({ allData, wikiIndex }) {
     );
   }
   const resolvedMarkdown = resolveWikiLinks(rawMarkdown, wikiIndex);
-
+  
   const infoData = allData.find((item) => item.id === slug);
   return (
     <div className="flex flex-col md:mx-auto md:block md:max-w-3xl lg:max-w-5xl">

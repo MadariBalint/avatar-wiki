@@ -1,9 +1,54 @@
 import { Link } from "react-router-dom";
 import CategoryBox from "../components/CategoryBox";
-import characters from "../data/characters.json";
+import { useEffect, useMemo, useState } from "react";
+import Spinner from "../components/Spinner";
 
 function Characters({ ABC }) {
-  const data = characters.map((item) => item);
+
+  const [characters,setCharacters] = useState([])
+
+  const [loading, setLoading] = useState(true)
+
+  useEffect(() => {
+      async function loadCharacters() {
+        setLoading(true);
+        try {
+          const res = await fetch("data/characters.json");
+          let response = await res.json();
+
+          response = response.filter((x) =>
+          x.hasPage
+        );
+  
+          setCharacters(response);
+        } catch (err) {
+          console.error("Failed to load characters", err);
+        } finally {
+          setLoading(false);
+        }
+      }
+
+      
+  
+      loadCharacters();
+    }, []);
+
+
+    const selectedData = useMemo(() => {
+        if (!characters.length) return [];
+        const shuffled = [...characters].sort(() => Math.random() - 0.5);
+        return characters.length <= 8 ? characters : shuffled.slice(0, 8);
+      }, [characters]);
+
+    if (loading) {
+        return (
+          <div className="mt-10 flex justify-center gap-3 font-[PapyrusWeb] text-6xl">
+            <Spinner />
+            <span>Loading...</span>
+          </div>
+        );
+      }
+
 
   return (
     <div>
@@ -12,21 +57,19 @@ function Characters({ ABC }) {
           Characters of the Avatar universe
         </span>
         <div className="flex max-w-sm flex-wrap justify-center gap-2 md:max-w-lg md:gap-4 lg:max-w-3xl lg:gap-x-10 lg:gap-y-10 xl:max-w-5xl xl:gap-x-15 xl:gap-y-15">
-          {data.map(
+          {selectedData.map(
             (el) =>
-              el.hasPage && (
                 <Link key={el.id} to={`/${el.id}`}>
                   <CategoryBox identity={el} category="characters" />
                 </Link>
-              )
+              
           )}
         </div>
       </div>
       <div className="mx-auto mt-10 max-w-sm columns-2 rounded-xl bg-sky-900/20 px-7 py-10 md:max-w-md md:px-15 lg:max-w-xl xl:max-w-3xl">
         {ABC.map((letter) => {
-          let arr = data.filter((x) => x.name.toUpperCase().startsWith(letter));
+          let arr = characters.filter((x) => x.name.toUpperCase().startsWith(letter));
           if (arr.length < 1) return;
-          if (arr.find((el) => el.hasPage) === undefined) return;
           return (
             <div className="mb-5" key={letter}>
               <span className="font-[PapyrusWeb] text-3xl">{letter}</span>
@@ -34,7 +77,7 @@ function Characters({ ABC }) {
                 {arr.map((el) => {
                   return (
                    
-                     el.hasPage && (<div className="grid grid-cols-4 items-center" key={el.id}>
+                     <div className="grid grid-cols-4 items-center" key={el.id}>
                         <div>
 
                         <img
@@ -49,7 +92,7 @@ function Characters({ ABC }) {
                           {el.name}
                         </Link>
                         </div>
-                    </div>)
+                    </div>
                   );
                 })}
               </div>
