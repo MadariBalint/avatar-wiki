@@ -8,13 +8,7 @@ import Fauna from "./pages/Fauna";
 import { Route, Routes } from "react-router-dom";
 import Article from "./pages/Article";
 
-import franchise from "./data/franchise.json";
-import affiliations from "./data/affiliations.json";
-import characters from "./data/characters.json";
-import fauna from "./data/fauna.json";
-import flora from "./data/flora.json";
-import locations from "./data/locations.json";
-import rda from "./data/rda.json";
+
 
 import { buildWikiIndex } from "./utils/wikiIndex";
 import { useEffect, useMemo, useState } from "react";
