@@ -34,7 +34,7 @@ function Flora({ ABC }) {
 
   if (loading) {
     return (
-      <div className="mt-10 flex justify-center gap-3 font-[PapyrusWeb] text-6xl">
+      <div className="h-svh flex justify-center items-center gap-3 font-[PapyrusWeb] text-6xl">
         <Spinner />
         <span>Loading...</span>
       </div>
