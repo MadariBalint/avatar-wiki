@@ -1,4 +1,4 @@
-function FaunaInfoBoxRow({ label, info, renderInfo }) {
+function FaunaInfoBoxRow({ label, info, renderInfo, allData }) {
   const isList = Array.isArray(info)
     ? info.length > 1
     : info && typeof info === "object"
@@ -10,7 +10,8 @@ function FaunaInfoBoxRow({ label, info, renderInfo }) {
       <div className="min-w-0 break-words">
         {renderInfo ? (
           <ul className={isList ? "list-disc pl-5" : "list-none"}>
-            {renderInfo(info)}
+            { allData && renderInfo(info, allData)}
+            { !allData && renderInfo(info)}
           </ul>
         ) : Array.isArray(info) ? (
           <ul className={isList ? "list-disc pl-5" : "list-none"}>

@@ -11,7 +11,7 @@ import {
 } from "../utils/renderers";
 import FaunaInfoBoxRow from "./FaunaInfoBoxRow";
 
-function FaunaInfoBox({ data = null }) {
+function FaunaInfoBox({ data = null, allData }) {
   if (!data) return null;
   return (
     <aside className="flex w-80 flex-col items-center text-sm">
@@ -38,6 +38,7 @@ function FaunaInfoBox({ data = null }) {
               label={"Habitat"}
               info={data.habitat}
               renderInfo={renderHabitat}
+              allData={allData}
             />
           )}
         </div>
@@ -110,6 +111,8 @@ function FaunaInfoBox({ data = null }) {
               label={"First seen"}
               info={data.firstSeen}
               renderInfo={renderSeen}
+              allData={allData}
+              
             />
           )}
           {data.lastSeen && (
@@ -117,6 +120,7 @@ function FaunaInfoBox({ data = null }) {
               label={"Last seen"}
               info={data.lastSeen}
               renderInfo={renderSeen}
+              allData={allData}
             />
           )}
         </div>

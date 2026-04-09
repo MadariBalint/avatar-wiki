@@ -1,4 +1,4 @@
-function CharacterInfoBoxRow({ label, info, renderInfo }) {
+function CharacterInfoBoxRow({ label, info, renderInfo, allData }) {
   const isList = Array.isArray(info)
     ? info.length > 1
     : info && typeof info === "object"
@@ -12,7 +12,8 @@ function CharacterInfoBoxRow({ label, info, renderInfo }) {
 
       {renderInfo ? (
         <ul className={isList ? "list-disc pl-5" : "list-none"}>
-          {renderInfo(info)}
+          { allData && renderInfo(info, allData)}
+          { !allData && renderInfo(info)}
         </ul>
       ) : Array.isArray(info) ? (
         <ul className={isList ? "list-disc pl-5" : "list-none"}>

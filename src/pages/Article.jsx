@@ -81,9 +81,9 @@ function Article({ allData, wikiIndex }) {
           <FranchiseInfoBox data={infoData} />
         )}
         {infoData?.articleType === "characters" && (
-          <CharacterInfoBox data={infoData} />
+          <CharacterInfoBox data={infoData} allData={allData} />
         )}
-        {infoData?.articleType === "fauna" && <FaunaInfoBox data={infoData} />}
+        {infoData?.articleType === "fauna" && <FaunaInfoBox data={infoData} allData={allData} />}
       </div>
       <div className="px-10 md:px-0 md:pt-1">
         <MarkdownRenderer content={resolvedMarkdown} />

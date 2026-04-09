@@ -1,13 +1,9 @@
 import { formatDate } from "./formatDate";
 
-import locations from "../data/locations.json";
-import characters from "../data/characters.json";
-import affiliations from "../data/affiliations.json";
-import franchise from "../data/franchise.json";
 
 import InfoBrackets from "../components/InfoBrackets";
 
-export function renderBorn(info) {
+export function renderBorn(info) { 
   const renderExtra = Object.keys(info).length > 1;
   return Object.entries(info).map(([type, date]) => {
     return (
@@ -70,11 +66,11 @@ export function renderPeriod(period) {
   return "";
 }
 
-export function renderHomeHistory(homeHistory) {
+export function renderHomeHistory(homeHistory, data) {
   return homeHistory.map((home) => {
     return (
       <li key={home.locationId}>
-        {locations.find((el) => el.id === home.locationId).name}
+        {data.find((el) => el.id === home.locationId).name}
 
         {home.period && (
           <InfoBrackets>{renderPeriod(home.period)}</InfoBrackets>
@@ -84,11 +80,11 @@ export function renderHomeHistory(homeHistory) {
   });
 }
 
-export function renderFamily(members) {
+export function renderFamily(members, data) {
   return members.map((member) => {
     return (
       <li key={member.id}>
-        {characters.find((el) => el.id === member.id).name}
+        {data.find((el) => el.id === member.id).name}
         <InfoBrackets>{`${member.order ? member.order + " " : ""}${member.relation ? member.relation : ""}`}</InfoBrackets>
       </li>
     );
@@ -106,11 +102,11 @@ export function renderOccupation(occ) {
   });
 }
 
-export function renderAffiliation(aff) {
+export function renderAffiliation(aff, data) {
   return aff.map((el) => {
     return (
       <li key={el.id}>
-        {affiliations.find((e) => e.id === el.id).name}
+        {data.find((e) => e.id === el.id).name}
 
         {el.status ? <InfoBrackets>{el.status}</InfoBrackets> : ""}
         {el.duration ? <InfoBrackets>{el.duration}</InfoBrackets> : ""}
@@ -118,7 +114,7 @@ export function renderAffiliation(aff) {
           ? el.departments.map((x) => {
               return (
                 <div className="ml-2" key={x.id}>
-                  {affiliations.find((z) => z.id === x.id).name}
+                  {data.find((z) => z.id === x.id).name}
                   {x.note ? <InfoBrackets>{x.note}</InfoBrackets> : ""}
                 </div>
               );
@@ -129,15 +125,15 @@ export function renderAffiliation(aff) {
   });
 }
 
-export function renderSeen(seen) {
-  return <li>{franchise.find((e) => e.id === seen).title}</li>;
+export function renderSeen(seen, data) {
+  return <li>{data.find((e) => e.id === seen).title}</li>;
 }
 
-export function renderHabitat(habitat) {
+export function renderHabitat(habitat, data) {
   return habitat.map((hab) => (
     <li key={hab}>
-      {locations.some((entry) => entry.id === hab)
-        ? locations.find((e) => e.id === hab).name
+      {data.some((entry) => entry.id === hab)
+        ? data.find((e) => e.id === hab).name
         : hab}
     </li>
   ));

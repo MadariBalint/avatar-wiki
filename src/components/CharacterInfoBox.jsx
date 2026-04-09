@@ -11,7 +11,7 @@ import {
   renderSeen,
 } from "../utils/renderers";
 
-function CharacterInfoBox({ data = null }) {
+function CharacterInfoBox({ data = null , allData}) {
   if (!data) return null;
   return (
     <aside className="flex w-80 flex-col items-center text-sm">
@@ -63,6 +63,7 @@ function CharacterInfoBox({ data = null }) {
               label={"Lived in"}
               info={data.homeHistory}
               renderInfo={renderHomeHistory}
+              allData={allData}
             />
           )}
         </div>
@@ -111,6 +112,7 @@ function CharacterInfoBox({ data = null }) {
               label={"Parents"}
               info={data.parentsIds}
               renderInfo={renderFamily}
+              allData={allData}
             />
           )}
           {data.siblingIds && (
@@ -118,6 +120,7 @@ function CharacterInfoBox({ data = null }) {
               label={"Siblings"}
               info={data.siblingIds}
               renderInfo={renderFamily}
+              allData={allData}
             />
           )}
           {data.extendedfamilyIds && (
@@ -125,6 +128,7 @@ function CharacterInfoBox({ data = null }) {
               label={"Extended family"}
               info={data.extendedfamilyIds}
               renderInfo={renderFamily}
+              allData={allData}
             />
           )}
         </div>
@@ -144,6 +148,7 @@ function CharacterInfoBox({ data = null }) {
               label={"Affiliations"}
               info={data.affiliations}
               renderInfo={renderAffiliation}
+              allData={allData}
             />
           )}
           {data.bondedWith && (
@@ -165,6 +170,7 @@ function CharacterInfoBox({ data = null }) {
               label={"First seen"}
               info={data.firstSeen}
               renderInfo={renderSeen}
+              allData={allData}
             />
           )}
           {data.lastSeen && (
@@ -172,6 +178,7 @@ function CharacterInfoBox({ data = null }) {
               label={"Last seen"}
               info={data.lastSeen}
               renderInfo={renderSeen}
+              allData={allData}
             />
           )}
         </div>

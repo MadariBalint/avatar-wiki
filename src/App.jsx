@@ -97,6 +97,7 @@ function App() {
     }
     loadAllData()
   }, [])
+
   
   const wikiIndex = useMemo(() => buildWikiIndex(allData), [allData]);
 

@@ -1,8 +1,27 @@
 import FranchiseElement from "./FranchiseElement";
-import franchise from "../data/franchise.json";
 import { Link } from "react-router-dom";
+import { useEffect, useState } from "react";
 
 function MediumFranchise() {
+
+  const [franchise,setFranchise] = useState([])
+
+  useEffect(()=>{
+
+    async function loadFranchise(){
+      try {
+        const res = await fetch("data/franchise.json")
+        const response = await res.json()
+
+        setFranchise(response)
+      } catch (err) {
+        console.error("Failed to load data", err)
+      } finally {
+      }
+    }
+
+    loadFranchise()
+  },[])
   const movies = franchise.filter((el) => el.type === "movies");
   const games = franchise.filter((el) => el.type === "games");
   const comics = franchise.filter((el) => el.type === "comics");
