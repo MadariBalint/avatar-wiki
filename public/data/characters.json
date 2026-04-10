@@ -785,5 +785,6 @@
   { "id": "oma", "hasPage": false, "name": "Oma" },
   { "id": "popiti", "hasPage": false, "name": "Popiti" },
   { "id": "tuvat", "hasPage": false, "name": "Tuvat" },
-  { "id": "varang", "hasPage": true, "name": "Varang" }
+  { "id": "varang", "hasPage": true, "name": "Varang" },
+  { "id": "bob", "hasPage": false, "name": "Bob" }
 ]

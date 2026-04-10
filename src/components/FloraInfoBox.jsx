@@ -1,0 +1,51 @@
+import { renderHabitat, renderSeen } from "../utils/renderers";
+import FloraInfoBoxRow from "./FloraInfoBoxRow";
+
+function FloraInfoBox({ data = null, allData }) {
+
+
+    if (!data) return null;
+
+    return (
+        <aside className="flex w-80 flex-col items-center text-sm">
+            <div className="mt-2 mb-1 flex w-full justify-center rounded-2xl border border-sky-600 bg-sky-800/40 p-2 text-xl">
+                <h2>{data.humanName || data.naviName}</h2>
+            </div>
+            <div>
+                <img className="rounded-2xl" src={`images/flora/${data.id}.webp`} alt={`${data.id}`} />
+            </div>
+            <div className="mt-1 w-full divide-y-2 divide-solid divide-sky-400 rounded-2xl border-2 border-sky-400 p-2">
+                <div className="flex justify-center rounded-t-xl bg-sky-700/30 text-lg">
+                    Flora Information
+                </div>
+                <div className="space-y-2 divide-y-1 divide-sky-400">
+                    {data.naviName && <FloraInfoBoxRow label={"Na'vi name"} info={data.naviName} />}
+                    {data.habitat && <FloraInfoBoxRow label={"Habitat"} info={data.habitat} renderInfo={renderHabitat} allData={allData} />}
+                    {data.height && <FloraInfoBoxRow label={"Height"} info={data.height} />}
+
+
+                </div>
+                <div className="flex justify-center rounded-t-xl bg-sky-700/30 text-lg">
+                    Behind the scenes
+                </div>
+                <div className="space-y-2 divide-y-1 divide-sky-400">
+                    {data.firstSeen && <FloraInfoBoxRow label={"First seen"}
+                        info={data.firstSeen}
+                        renderInfo={renderSeen}
+                        allData={allData} />}
+                    {data.lastSeen && <FloraInfoBoxRow label={"First seen"}
+                        info={data.firstSeen}
+                        renderInfo={renderSeen}
+                        allData={allData} />}
+
+
+                </div>
+
+
+            </div>
+
+        </aside>)
+
+}
+
+export default FloraInfoBox

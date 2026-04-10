@@ -22,7 +22,7 @@ function MarkdownLink({ href = "", children, ...props }) {
   }
 
   return (
-    <Link className="text-sky-600" to={href} {...props}>
+    <Link className="text-sky-600 no-underline hover:underline" to={href} {...props}>
       {children}
     </Link>
   );

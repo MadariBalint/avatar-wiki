@@ -7,6 +7,7 @@ import { resolveWikiLinks } from "../utils/resolveWikiLinks";
 import MarkdownRenderer from "../components/MarkdownRenderer";
 import Spinner from "../components/Spinner";
 import FaunaInfoBox from "../components/FaunaInfoBox";
+import FloraInfoBox from "../components/FloraInfoBox";
 
 function Article({ allData, wikiIndex }) {
   const { slug } = useParams();
@@ -78,12 +79,13 @@ function Article({ allData, wikiIndex }) {
     <div className="flex flex-col md:mx-auto md:block md:max-w-3xl lg:max-w-5xl">
       <div className="lg:md-10 mb-10 flex justify-center font-[verdana] md:float-right md:ml-5">
         {infoData?.articleType === "franchise" && (
-          <FranchiseInfoBox data={infoData} />
+          <FranchiseInfoBox data={infoData} allData={allData} />
         )}
         {infoData?.articleType === "characters" && (
           <CharacterInfoBox data={infoData} allData={allData} />
         )}
         {infoData?.articleType === "fauna" && <FaunaInfoBox data={infoData} allData={allData} />}
+        {infoData?.articleType === "flora" && <FloraInfoBox data={infoData} allData={allData} />}
       </div>
       <div className="px-10 md:px-0 md:pt-1">
         <MarkdownRenderer content={resolvedMarkdown} />

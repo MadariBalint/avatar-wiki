@@ -2,6 +2,7 @@ import { formatDate } from "./formatDate";
 
 
 import InfoBrackets from "../components/InfoBrackets";
+import InternalLink from "../components/InternalLink";
 
 export function renderBorn(info) { 
   const renderExtra = Object.keys(info).length > 1;
@@ -15,12 +16,22 @@ export function renderBorn(info) {
   });
 }
 
-export function renderAliases(info) {
+export function renderAliases(info, data) {
+  const needsLink = data.some((e) => e.id === info)
+
   return info.map((el) => {
     return (
       <li key={el.alias}>
-        {el.alias}
-        {el.note && <InfoBrackets>{el.note}</InfoBrackets>}
+        {needsLink && <InternalLink href={info}>
+          {el.alias}
+          {el.note && <InfoBrackets>{el.note}</InfoBrackets>}
+        </InternalLink>}
+        {!needsLink && <>
+          {el.alias}
+          {el.note && <InfoBrackets>{el.note}</InfoBrackets>}
+        </>
+        }
+
       </li>
     );
   });
@@ -67,10 +78,16 @@ export function renderPeriod(period) {
 }
 
 export function renderHomeHistory(homeHistory, data) {
+  let needsLink
   return homeHistory.map((home) => {
+    needsLink = data.some((e) => e.id === home.locationId && e.hasPage === true)
     return (
       <li key={home.locationId}>
-        {data.find((el) => el.id === home.locationId).name}
+        {needsLink && (
+          <InternalLink href={home.locationId}>
+            {data.find((el) => el.id === home.locationId).name}
+          </InternalLink>)}
+        {!needsLink && data.find((el) => el.id === home.locationId).name}
 
         {home.period && (
           <InfoBrackets>{renderPeriod(home.period)}</InfoBrackets>
@@ -81,32 +98,50 @@ export function renderHomeHistory(homeHistory, data) {
 }
 
 export function renderFamily(members, data) {
+  let needsLink
   return members.map((member) => {
+    needsLink = data.some((e)=> e.id === member.id && e.hasPage === true)
+    console.log(needsLink)
     return (
       <li key={member.id}>
-        {data.find((el) => el.id === member.id).name}
+        {needsLink && <InternalLink href={member.id}>{data.find((el)=> el.id === member.id).name}</InternalLink>}
+        {!needsLink && data.find((el)=> el.id === member.id).name}
         <InfoBrackets>{`${member.order ? member.order + " " : ""}${member.relation ? member.relation : ""}`}</InfoBrackets>
       </li>
     );
   });
 }
 
-export function renderOccupation(occ) {
+export function renderOccupation(occ, data) {
+  let needsLink
   return occ.map((el, i) => {
+    needsLink = data.some(e => e.id === el.id && e.hasPage === true)
     return (
       <li key={i}>
-        {el.occupation}
-        {el.note && <InfoBrackets>{el.note}</InfoBrackets>}
+        {needsLink && (
+          <InternalLink href={el.id}>
+            {el.occupation}
+            {el.note && <InfoBrackets>{el.note}</InfoBrackets>}
+          </InternalLink>)}
+        {!needsLink && (
+          <>
+            {el.occupation}
+            {el.note && <InfoBrackets>{el.note}</InfoBrackets>}
+          </>
+        )}
       </li>
     );
   });
 }
 
 export function renderAffiliation(aff, data) {
+  let needsLink
   return aff.map((el) => {
+    needsLink = data.some(e =>(e.id === el.id  && e.hasPage === true ) )
     return (
       <li key={el.id}>
-        {data.find((e) => e.id === el.id).name}
+        {needsLink && <InternalLink href={el.id}>{data.find((e) => e.id === el.id).name}</InternalLink>  }
+        {!needsLink && data.find((e) => e.id === el.id).name}
 
         {el.status ? <InfoBrackets>{el.status}</InfoBrackets> : ""}
         {el.duration ? <InfoBrackets>{el.duration}</InfoBrackets> : ""}
@@ -126,7 +161,16 @@ export function renderAffiliation(aff, data) {
 }
 
 export function renderSeen(seen, data) {
-  return <li>{data.find((e) => e.id === seen).title}</li>;
+  const needsLink = data.some((e)=> e.id === seen)
+
+
+  if(seen === "pandorapedia")
+  if(seen === "pandorapedia") {return <li className="text-sky-600 hover:underline "><a href="https://www.avatar.com/pandorapedia">Pandorapedia</a></li>}
+  return <li >
+      {needsLink && 
+        <InternalLink href={seen}>{data.find((e) => e.id === seen)?.title}</InternalLink>}
+      {!needsLink && data.find((e) => e.id === seen)?.title}
+  </li>;
 }
 
 export function renderHabitat(habitat, data) {

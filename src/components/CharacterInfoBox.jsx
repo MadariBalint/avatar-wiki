@@ -38,6 +38,7 @@ function CharacterInfoBox({ data = null , allData}) {
               label={"Aliases"}
               info={data.aliases}
               renderInfo={renderAliases}
+              allData={allData}
             />
           )}
           {data.born && (
@@ -141,6 +142,7 @@ function CharacterInfoBox({ data = null , allData}) {
               label={"Occupations"}
               info={data.occupations}
               renderInfo={renderOccupation}
+              allData={allData}
             />
           )}
           {data.affiliations && (
