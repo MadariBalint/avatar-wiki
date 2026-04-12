@@ -111,7 +111,7 @@ function App() {
 
   return (
     <>
-      <Header />
+      <Header allData={allData} />
       <ScrollToTop />
       <Routes>
         <Route
