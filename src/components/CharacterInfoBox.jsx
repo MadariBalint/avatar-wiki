@@ -11,7 +11,7 @@ import {
   renderSeen,
 } from "../utils/renderers";
 
-function CharacterInfoBox({ data = null , allData}) {
+function CharacterInfoBox({ data = null, allData }) {
   if (!data) return null;
   return (
     <aside className="flex w-80 flex-col items-center text-sm">
@@ -21,7 +21,7 @@ function CharacterInfoBox({ data = null , allData}) {
       <div>
         <img
           className="rounded-2xl"
-          src={`/images/characters/${data.id}-face.png`}
+          src={`/images/characters/${data.id}-face.webp`}
           alt={`${data.id}-face`}
         />
       </div>

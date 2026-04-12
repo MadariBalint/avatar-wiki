@@ -9,7 +9,7 @@ function FranchiseElement({
       <div className="m-3 flex h-48 w-32 flex-col lg:h-80 lg:w-56">
         <img
           className="h-full w-full rounded-md object-cover shadow-md/60 shadow-black"
-          src={`/images/franchise/${category}/${name}-poster.png`}
+          src={`/images/franchise/${category}/${name}-poster.webp`}
           alt={`${name}-poster`}
         />
       </div>

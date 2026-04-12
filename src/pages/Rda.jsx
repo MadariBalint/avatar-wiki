@@ -51,7 +51,7 @@ function Rda({ allData, ABC }) {
                       >
                         <img
                           className="col-start-1 h-12 w-12 object-contain"
-                          src={`/images/${el.articleType}/${el.articleType === "franchise" ? `${el.type}/` : ""}${el.id}${el.articleType === "characters" ? "-face" : ""}.png`}
+                          src={`/images/${el.articleType}/${el.articleType === "franchise" ? `${el.type}/` : ""}${el.id}${el.articleType === "characters" ? "-face" : ""}.webp`}
                           alt=""
                         />
 

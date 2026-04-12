@@ -1,4 +1,4 @@
-import { Route, Routes} from "react-router-dom";
+import { Route, Routes } from "react-router-dom";
 import { useEffect, useMemo, useState } from "react";
 
 import Home from "./pages/Home";
@@ -14,13 +14,6 @@ import Spinner from "./components/Spinner";
 
 import { buildWikiIndex } from "./utils/wikiIndex";
 import ScrollToTop from "./components/ScrollToTop";
-
-
-
-
-
-
-
 
 const alphabet = [
   "A",
@@ -52,65 +45,67 @@ const alphabet = [
 ];
 
 function App() {
+  const [allData, setAllData] = useState([]);
 
-    
-  const [allData, setAllData] = useState([])
-
-  const [loading, setLoading] = useState(true)
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     async function loadAllData() {
-      setLoading(true)
+      setLoading(true);
       try {
-        const [franchise, affiliations, characters, fauna, flora, locations, rda] = await Promise.all([
+        const [
+          franchise,
+          affiliations,
+          characters,
+          fauna,
+          flora,
+          locations,
+          rda,
+        ] = await Promise.all([
           (await fetch("data/franchise.json")).json(),
           (await fetch("data/affiliations.json")).json(),
           (await fetch("data/characters.json")).json(),
           (await fetch("data/fauna.json")).json(),
           (await fetch("data/flora.json")).json(),
           (await fetch("data/locations.json")).json(),
-          (await fetch("data/rda.json")).json()
-
-        ])
+          (await fetch("data/rda.json")).json(),
+        ]);
         const combined = [
           ...franchise.map((item) => ({ ...item, articleType: "franchise" })),
-          ...affiliations.map((item) => ({ ...item, articleType: "affiliation" })),
+          ...affiliations.map((item) => ({
+            ...item,
+            articleType: "affiliation",
+          })),
           ...characters.map((item) => ({ ...item, articleType: "characters" })),
           ...fauna.map((item) => ({ ...item, articleType: "fauna" })),
           ...flora.map((item) => ({ ...item, articleType: "flora" })),
-          ...locations.map((item) => ({ ...item, articleType: "location" })),
+          ...locations.map((item) => ({ ...item, articleType: "locations" })),
           ...rda.map((item) => ({ ...item, articleType: "rda" })),
         ];
 
-        setAllData(combined)
+        setAllData(combined);
       } catch (err) {
-        console.error("Error loading data", err)
+        console.error("Error loading data", err);
       } finally {
-        setLoading(false)
+        setLoading(false);
       }
-
-
     }
-    loadAllData()
-  }, [])
+    loadAllData();
+  }, []);
 
-  
   const wikiIndex = useMemo(() => buildWikiIndex(allData), [allData]);
 
-  
-
-
-
   if (loading) {
-      return (
-        <div className="h-svh flex justify-center items-center gap-3 font-[PapyrusWeb] text-6xl">
-          <Spinner />
-          <span>Loading...</span>
-        </div>
-      );
-    }
+    return (
+      <div className="flex h-svh items-center justify-center gap-3 font-[PapyrusWeb] text-6xl">
+        <Spinner />
+        <span>Loading...</span>
+      </div>
+    );
+  }
 
-  
+  console.log(allData.filter((x) => x.articleType === "locations"));
+
   return (
     <>
       <Header />

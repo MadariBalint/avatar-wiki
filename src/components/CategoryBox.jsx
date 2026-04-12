@@ -4,7 +4,7 @@ function CategoryBox({ identity, category }) {
       <div className="h-54 w-48">
         <img
           className="h-full w-full object-cover"
-          src={`/images/${category}/${category === "franchise" ? `${identity.type}/` : ""}${identity.id}${category === "characters" ? "-face" : ""}.png`}
+          src={`/images/${category}/${category === "franchise" ? `${identity.type}/` : ""}${identity.id}${category === "characters" ? "-face" : ""}.webp`}
           alt={`${identity.id} photo`}
         />
       </div>

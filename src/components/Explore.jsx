@@ -3,18 +3,18 @@ import ExploreItem from "./ExploreItem";
 import Section from "./Section";
 import SectionHeading from "./SectionHeading";
 
-import avatarFaaLogo from "../assets/icons/avatar-faa-logo.jpg";
-import avatarLogo from "../assets/icons/avatar-logo.jpg";
-import avatarTwowLogo from "../assets/icons/avatar-twow-logo.jpg";
-import avatarsLogo from "../assets/icons/avatars-logo.jpg";
-import faunaLogo from "../assets/icons/fauna-logo.jpg";
-import floraLogo from "../assets/icons/flora-logo.jpg";
-import gamesLogo from "../assets/icons/games-logo.jpg";
-import gunLogo from "../assets/icons/gun-logo.jpg";
-import humanLogo from "../assets/icons/human-logo.jpg";
-import naviLogo from "../assets/icons/navi-logo.jpg";
-import rdaLogo from "../assets/icons/RDA-logo.jpg";
-import vehicleLogo from "../assets/icons/vehicle-logo.jpg";
+import avatarFaaLogo from "../assets/icons/avatar-faa-logo.webp";
+import avatarLogo from "../assets/icons/avatar-logo.webp";
+import avatarTwowLogo from "../assets/icons/avatar-twow-logo.webp";
+import avatarsLogo from "../assets/icons/avatars-logo.webp";
+import faunaLogo from "../assets/icons/fauna-logo.webp";
+import floraLogo from "../assets/icons/flora-logo.webp";
+import gamesLogo from "../assets/icons/games-logo.webp";
+import gunLogo from "../assets/icons/gun-logo.webp";
+import humanLogo from "../assets/icons/human-logo.webp";
+import naviLogo from "../assets/icons/navi-logo.webp";
+import rdaLogo from "../assets/icons/RDA-logo.webp";
+import vehicleLogo from "../assets/icons/vehicle-logo.webp";
 
 function Explore() {
   return (
@@ -22,13 +22,13 @@ function Explore() {
       <Section>
         <SectionHeading title={`Explore`} />
         <div className="grid grid-cols-6 justify-center justify-items-center gap-y-3 py-3 lg:grid-cols-[repeat(6,max-content)] lg:gap-x-3">
-          <Link to="/category:avatar">
+          <Link to="/avatar">
             <ExploreItem file={avatarLogo} />
           </Link>
-          <Link to="/category:avatar-twow">
+          <Link to="/avatar-twow">
             <ExploreItem file={avatarTwowLogo} />
           </Link>
-          <Link to="/category:avatar-faa">
+          <Link to="/avatar-faa">
             <ExploreItem file={avatarFaaLogo} />
           </Link>
           <Link to="/category:games">

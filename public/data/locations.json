@@ -64,7 +64,7 @@
   },
   {
     "id": "bridgehead",
-    "name": "Bridghead",
+    "name": "Bridgehead",
     "type": "location",
     "location": "pandora",
     "residentIds": ["rda"],

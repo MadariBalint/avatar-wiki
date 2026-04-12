@@ -5,7 +5,7 @@ function FeaturedCharactersItem({ file, name }) {
     >
       <img
         className="h-full w-full object-cover"
-        src={`/images/characters/${file}.png`}
+        src={`/images/characters/${file}.webp`}
         alt={`${file}`}
       />
       <div className="absolute bottom-0 flex w-full items-center justify-center bg-black/50 text-white">

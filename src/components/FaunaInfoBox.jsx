@@ -21,7 +21,7 @@ function FaunaInfoBox({ data = null, allData }) {
       <div>
         <img
           className="rounded-2xl"
-          src={`/images/fauna/${data.id}.png`}
+          src={`/images/fauna/${data.id}.webp`}
           alt={`${data.id}`}
         />
       </div>
@@ -112,7 +112,6 @@ function FaunaInfoBox({ data = null, allData }) {
               info={data.firstSeen}
               renderInfo={renderSeen}
               allData={allData}
-              
             />
           )}
           {data.lastSeen && (

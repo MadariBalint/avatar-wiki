@@ -9,7 +9,7 @@ function FranchiseInfoBox({ data = null }) {
       <div>
         <img
           className="rounded-2xl"
-          src={`/images/franchise/${data.type}/${data.id}-poster.png`}
+          src={`/images/franchise/${data.type}/${data.id}-poster.webp`}
           alt={`${data.id}-poster`}
         />
       </div>

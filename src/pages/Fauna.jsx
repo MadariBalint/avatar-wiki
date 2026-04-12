@@ -34,7 +34,7 @@ function Fauna({ ABC }) {
 
   if (loading) {
     return (
-      <div className="h-svh flex justify-center items-center gap-3 font-[PapyrusWeb] text-6xl">
+      <div className="flex h-svh items-center justify-center gap-3 font-[PapyrusWeb] text-6xl">
         <Spinner />
         <span>Loading...</span>
       </div>
@@ -82,7 +82,7 @@ function Fauna({ ABC }) {
                       >
                         <img
                           className="col-start-1 h-12 w-12 object-contain"
-                          src={`/images/fauna/${el.id}.png`}
+                          src={`/images/fauna/${el.id}.webp`}
                           alt=""
                         />
 
