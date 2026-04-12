@@ -19,7 +19,7 @@ function Characters({ ABC }) {
 
         setCharacters(response);
       } catch (err) {
-        console.error("Failed to load characters", err);
+        console.error("Failed to load data", err);
       } finally {
         setLoading(false);
       }

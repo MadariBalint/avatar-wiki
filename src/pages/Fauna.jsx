@@ -17,7 +17,7 @@ function Fauna({ ABC }) {
 
         setFauna(response);
       } catch (err) {
-        console.error("Failed to load fauna", err);
+        console.error("Failed to load data", err);
       } finally {
         setLoading(false);
       }

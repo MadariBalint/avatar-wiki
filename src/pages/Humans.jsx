@@ -1,23 +1,21 @@
-import { Link } from "react-router-dom";
-import CategoryBox from "../components/CategoryBox";
 import { useEffect, useMemo, useState } from "react";
 import Spinner from "../components/Spinner";
+import { Link } from "react-router-dom";
+import CategoryBox from "../components/CategoryBox";
 
-function Navi({ ABC }) {
+function Humans({ ABC }) {
   const [data, setData] = useState([]);
 
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    async function loadNavi() {
+    async function loadHumans() {
       setLoading(true);
       try {
         const res = await fetch("data/characters.json");
         let response = await res.json();
 
-        response = response.filter((x) =>
-          x.speciesIds?.find((el) => el === "navi")
-        );
+        response = response.filter((x) => x.speciesIds?.includes("human"));
 
         setData(response);
       } catch (err) {
@@ -27,7 +25,7 @@ function Navi({ ABC }) {
       }
     }
 
-    loadNavi();
+    loadHumans();
   }, []);
 
   const selectedData = useMemo(() => {
@@ -49,13 +47,13 @@ function Navi({ ABC }) {
     <div>
       <div className="flex flex-col items-center gap-10">
         <span className="text-center font-[PapyrusWeb] text-3xl md:text-4xl lg:text-5xl">
-          The "People" a.k.a the Na'vi
+          Important human characters
         </span>
         <div className="flex max-w-sm flex-wrap justify-center gap-2 md:max-w-lg md:gap-4 lg:max-w-3xl lg:gap-x-10 lg:gap-y-10 xl:max-w-5xl xl:gap-x-15 xl:gap-y-15">
           {selectedData.map(
             (el) =>
               el.hasPage &&
-              el.speciesIds?.find((el) => el === "navi") && (
+              el.speciesIds?.find((el) => el === "human") && (
                 <Link key={el.id} to={`/${el.id}`}>
                   <CategoryBox identity={el} category="characters" />
                 </Link>
@@ -69,7 +67,7 @@ function Navi({ ABC }) {
           if (arr.length < 1) return;
           if (
             arr.find((el) => el.hasPage) === undefined ||
-            !arr.find((e) => e.speciesIds?.includes("navi"))
+            !arr.find((e) => e.speciesIds?.includes("human"))
           )
             return;
 
@@ -80,7 +78,7 @@ function Navi({ ABC }) {
                 {arr.map((el) => {
                   return (
                     el.hasPage &&
-                    el.speciesIds?.find((el) => el === "navi") && (
+                    el.speciesIds?.find((el) => el === "human") && (
                       <div
                         className="grid grid-cols-4 items-center"
                         key={el.id}
@@ -107,4 +105,4 @@ function Navi({ ABC }) {
   );
 }
 
-export default Navi;
+export default Humans;

@@ -52,7 +52,7 @@ function Explore() {
           <Link to="/category:rda">
             <ExploreItem file={rdaLogo} />
           </Link>
-          <Link to="/category:vehicle">
+          <Link to="/category:vehicles">
             <ExploreItem file={vehicleLogo} />
           </Link>
           <Link to="/category:weapons">

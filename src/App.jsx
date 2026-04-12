@@ -14,6 +14,11 @@ import Spinner from "./components/Spinner";
 
 import { buildWikiIndex } from "./utils/wikiIndex";
 import ScrollToTop from "./components/ScrollToTop";
+import Games from "./pages/Games";
+import Avatars from "./pages/Avatars";
+import Humans from "./pages/Humans";
+import Weapons from "./pages/Weapons";
+import Vehicles from "./pages/Vehicles";
 
 const alphabet = [
   "A",
@@ -104,8 +109,6 @@ function App() {
     );
   }
 
-  console.log(allData.filter((x) => x.articleType === "locations"));
-
   return (
     <>
       <Header />
@@ -127,6 +130,14 @@ function App() {
         />
         <Route path="/category:flora" element={<Flora ABC={alphabet} />} />
         <Route path="/category:fauna" element={<Fauna ABC={alphabet} />} />
+        <Route path="/category:games" element={<Games ABC={alphabet} />} />
+        <Route path="/category:avatars" element={<Avatars ABC={alphabet} />} />
+        <Route path="/category:humans" element={<Humans ABC={alphabet} />} />
+        <Route path="/category:weapons" element={<Weapons ABC={alphabet} />} />
+        <Route
+          path="/category:vehicles"
+          element={<Vehicles ABC={alphabet} />}
+        />
       </Routes>
     </>
   );

@@ -17,7 +17,7 @@ function Flora({ ABC }) {
 
         setFlora(response);
       } catch (err) {
-        console.error("Failed to load Flora", err);
+        console.error("Failed to load data", err);
       } finally {
         setLoading(false);
       }
