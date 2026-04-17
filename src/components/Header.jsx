@@ -6,10 +6,15 @@ import useLockBodyScroll from "../utils/useLockBodyScroll";
 
 import logo from "../assets/logo.webp";
 
-function Header({ allData }) {
+function Header({ allData, isScrolled }) {
   const [query, setQuery] = useState("");
   const [isSearchOpen, setIsSearchOpen] = useState(false);
   const [isInFocus, setIsInFocus] = useState(false)
+  const [open, setOpen] = useState(false);
+  const [openSearch, setOpenSearch] = useState(false)
+  const menuRef = useRef(null);
+
+  console.log(window.scrollY)
 
   const searchRef = useRef(null);
 
@@ -84,16 +89,14 @@ function Header({ allData }) {
         record.hasPage && includesMatches.push(record);
       }
     }
-
+    
     return [...exactMatches, ...startsWithMatches, ...includesMatches].slice(
       0,
       6
     );
   }, [query, searchRecords]);
+  
 
-  const [open, setOpen] = useState(false);
-  const [openSearch, setOpenSearch] = useState(false)
-  const menuRef = useRef(null);
   
 
   useEffect(() => {
@@ -116,7 +119,7 @@ function Header({ allData }) {
 
   return (
     <>
-      <div className="sticky top-0 z-50  flex h-[10rem] flex-row items-center justify-between bg-sky-100">
+      <div className={`fixed w-full top-0 z-50 ${isScrolled ? "h-32 md:h-28 lg:h-16" : "h-40 md:h-36 lg:h-32"} flex flex-row items-center justify-between bg-sky-100 transition-all duration-300`}>
         <div className="h-full max-w-[50%] md:max-w-[30%]">
           <Link to="/">
             <img

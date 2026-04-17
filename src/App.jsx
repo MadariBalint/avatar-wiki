@@ -99,6 +99,18 @@ function App() {
   }, []);
 
   const wikiIndex = useMemo(() => buildWikiIndex(allData), [allData]);
+  
+  const [isScrolled, setIsScrolled] = useState(false)
+
+   useEffect(()=> {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 40)
+    }
+
+    window.addEventListener("scroll", handleScroll)
+    return () => window.removeEventListener("scroll", handleScroll)
+  }, [])
+  
 
   if (loading) {
     return (
@@ -111,23 +123,25 @@ function App() {
 
   return (
     <>
-      <Header allData={allData} />
+      <Header allData={allData} isScrolled={isScrolled} />
       <ScrollToTop />
+      <main className={`${isScrolled ? "pt-32 md:pt-28 lg:pt-16" : "pt-40 md:pt-36 lg:pt-32"}`}>
+
       <Routes>
         <Route
           path="/:slug"
           element={<Article allData={allData} wikiIndex={wikiIndex} />}
-        />
+          />
         <Route path="/" element={<Home />} />
         <Route
           path="/category:characters"
           element={<Characters ABC={alphabet} />}
-        />
+          />
         <Route path="/category:navi" element={<Navi ABC={alphabet} />} />
         <Route
           path="/category:rda"
           element={<Rda ABC={alphabet} allData={allData} />}
-        />
+          />
         <Route path="/category:flora" element={<Flora ABC={alphabet} />} />
         <Route path="/category:fauna" element={<Fauna ABC={alphabet} />} />
         <Route path="/category:games" element={<Games ABC={alphabet} />} />
@@ -139,6 +153,7 @@ function App() {
           element={<Vehicles ABC={alphabet} />}
         />
       </Routes>
+      </main>
     </>
   );
 }
