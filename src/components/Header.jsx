@@ -116,7 +116,7 @@ function Header({ allData }) {
 
   return (
     <>
-      <div className="flex h-[10rem] flex-row items-center justify-between">
+      <div className="sticky top-0 z-50  flex h-[10rem] flex-row items-center justify-between bg-sky-100">
         <div className="h-full max-w-[50%] md:max-w-[30%]">
           <Link to="/">
             <img
@@ -126,7 +126,7 @@ function Header({ allData }) {
             />
           </Link>
         </div>
-        <div className="mr-12 ml-auto flex flex-row gap-2 md:hidden">
+        <div className="mr-12 ml-auto flex flex-row gap-5 md:hidden">
           <button onClick={() => setOpenSearch((prev)=> !prev)}>
             {openSearch && !open ? <X /> : <Search />}
           </button>
