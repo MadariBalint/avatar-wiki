@@ -104,7 +104,7 @@ function App() {
 
    useEffect(()=> {
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 40)
+      setIsScrolled(window.scrollY > 60)
     }
 
     window.addEventListener("scroll", handleScroll)
@@ -125,8 +125,6 @@ function App() {
     <>
       <Header allData={allData} isScrolled={isScrolled} />
       <ScrollToTop />
-      <main className={`${isScrolled ? "pt-24 md:pt-16 lg:pt-12" : "pt-40 md:pt-36 lg:pt-32"}`}>
-
       <Routes>
         <Route
           path="/:slug"
@@ -153,7 +151,7 @@ function App() {
           element={<Vehicles ABC={alphabet} />}
         />
       </Routes>
-      </main>
+      
     </>
   );
 }

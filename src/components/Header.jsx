@@ -14,7 +14,7 @@ function Header({ allData, isScrolled }) {
   const [openSearch, setOpenSearch] = useState(false)
   const menuRef = useRef(null);
 
-  
+
 
   const searchRef = useRef(null);
 
@@ -89,19 +89,19 @@ function Header({ allData, isScrolled }) {
         record.hasPage && includesMatches.push(record);
       }
     }
-    
+
     return [...exactMatches, ...startsWithMatches, ...includesMatches].slice(
       0,
       6
     );
   }, [query, searchRecords]);
-  
 
-  
+
+
 
   useEffect(() => {
     function handleClickOutside(event) {
-      
+
       if (menuRef.current && !menuRef.current.contains(event.target)) {
         setOpen(false);
       }
@@ -118,8 +118,8 @@ function Header({ allData, isScrolled }) {
   useLockBodyScroll(open);
 
   return (
-    <>
-      <div className={`fixed w-full top-0 z-50 ${isScrolled ? "h-24 md:h-16 lg:h-12" : "h-40 md:h-36 lg:h-32"} flex flex-row items-center justify-between bg-sky-100 transition-all duration-300`}>
+    <nav className="sticky top-0 z-50 ">
+      <div className={`flex flex-row w-full h-32 md:h-24 lg:h-20 transition-all duration-300  items-center justify-between bg-sky-100 `}>
         <div className="h-full max-w-[50%] md:max-w-[30%]">
           <Link to="/">
             <img
@@ -130,16 +130,16 @@ function Header({ allData, isScrolled }) {
           </Link>
         </div>
         <div className="mr-12 ml-auto flex flex-row gap-5 md:hidden">
-          <button onClick={() => setOpenSearch((prev)=> !prev)}>
+          <button onClick={() => setOpenSearch((prev) => !prev)}>
             {openSearch && !open ? <X /> : <Search />}
           </button>
           <button
-            
+
             onClick={() => setOpen((prev) => !prev)}
           >
             {open ? <X /> : <MenuIcon />}
           </button>
-          
+
         </div>
 
 
@@ -190,12 +190,13 @@ function Header({ allData, isScrolled }) {
         </div>
       </div>
       {open && (
-        <div ref={menuRef} className="md:hidden">
+        <div ref={menuRef} className="md:hidden bg-sky-100 grow">
           <Menu closeMenu={() => setOpen(false)} />
         </div>
       )}
       {openSearch && !open && (
-        <div ref={searchRef} className="relative grow mx-15 md:hidden">
+        <div ref={searchRef} className="grow md:hidden h-full bg-sky-100 mb-5">
+          <div className="relative mx-15 ">
             <input
               type="text"
               value={query}
@@ -236,9 +237,12 @@ function Header({ allData, isScrolled }) {
                 )}
               </div>
             )}
+
           </div>
+
+        </div>
       )}
-    </>
+    </nav>
   );
 }
 
