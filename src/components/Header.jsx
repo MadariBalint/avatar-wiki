@@ -118,7 +118,7 @@ function Header({ allData, isScrolled }) {
   useLockBodyScroll(open);
 
   return (
-    <nav className="sticky top-0 z-50 ">
+    <nav className="sticky flex flex-col  top-0 z-50">
       <div className={`flex flex-row w-full h-32 md:h-24 lg:h-20 transition-all duration-300  items-center justify-between bg-sky-100 `}>
         <div className="h-full max-w-[50%] md:max-w-[30%]">
           <Link to="/">
