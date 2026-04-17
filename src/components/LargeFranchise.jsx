@@ -37,25 +37,25 @@ function LargeFranchise() {
     <>
       <div className="mx-10 mt-10 flex flex-row justify-start gap-x-0 rounded-xl bg-sky-400/20 p-2 shadow-lg">
         <button
-          className={`mx-3 rounded-md px-2 py-1 shadow-xs shadow-sky-900/40 ${active === "movies" ? "bg-sky-500/30" : ""}`}
+          className={`transition-all duration-150  mx-3 rounded-md px-2 py-1 shadow-xs shadow-sky-900/40 ${active === "movies" ? "bg-sky-600/30" : "hover:scale-105 hover:bg-sky-500/20"}`}
           onClick={() => handleClick("movies")}
         >
           Movies
         </button>
         <button
-          className={`mx-3 rounded-md px-2 py-1 shadow-xs shadow-sky-900/40 ${active === "games" ? "bg-sky-500/30" : ""}`}
+          className={`transition-all duration-150 mx-3 rounded-md px-2 py-1 shadow-xs shadow-sky-900/40 ${active === "games" ? "bg-sky-600/30" : "hover:bg-sky-500/20  hover:scale-105"}`}
           onClick={() => handleClick("games")}
         >
           Games
         </button>
         <button
-          className={`mx-3 rounded-md px-2 py-1 shadow-xs shadow-sky-900/40 ${active === "comics" ? "bg-sky-500/30" : ""}`}
+          className={`transition-all duration-150 mx-3 rounded-md px-2 py-1 shadow-xs shadow-sky-900/40 ${active === "comics" ? "bg-sky-600/30" : "hover:bg-sky-500/20  hover:scale-105"}`}
           onClick={() => handleClick("comics")}
         >
           Comics
         </button>
         <button
-          className={`mx-3 rounded-md px-2 py-1 shadow-xs shadow-sky-900/40 ${active === "books" ? "bg-sky-500/30" : ""}`}
+          className={`transition-all duration-150 mx-3 rounded-md px-2 py-1 shadow-xs shadow-sky-900/40 ${active === "books" ? "bg-sky-600/30" : "hover:bg-sky-500/20  hover:scale-105"}`}
           onClick={() => handleClick("books")}
         >
           Books
@@ -65,7 +65,7 @@ function LargeFranchise() {
         <div className="flex flex-row flex-wrap justify-center py-6">
           {movies.map((movie) => {
             return (
-              <Link key={movie.id} to={`/${movie.id}`}>
+              <Link className="transition-all duration-150 hover:scale-105" key={movie.id} to={`/${movie.id}`}>
                 <FranchiseElement
                   name={movie.id}
                   fullTitle={movie.title}
@@ -82,7 +82,7 @@ function LargeFranchise() {
         <div className="flex flex-row flex-wrap justify-center py-6">
           {games.map((game) => {
             return (
-              <Link key={game.id} to={`/${game.id}`}>
+              <Link className="transition-all duration-150 hover:scale-105" key={game.id} to={`/${game.id}`}>
                 <FranchiseElement
                   name={game.id}
                   fullTitle={game.title}
@@ -99,7 +99,7 @@ function LargeFranchise() {
         <div className="flex flex-row flex-wrap justify-center py-6">
           {comics.map((comic) => {
             return (
-              <Link key={comic.id} to={`/${comic.id}`}>
+              <Link className="transition-all duration-150 hover:scale-105" key={comic.id} to={`/${comic.id}`}>
                 <FranchiseElement
                   name={comic.id}
                   fullTitle={comic.title}
@@ -116,7 +116,7 @@ function LargeFranchise() {
         <div className="flex flex-row flex-wrap justify-center py-6">
           {books.map((book) => {
             return (
-              <Link key={book.id} to={`/${book.id}`}>
+              <Link className="transition-all duration-150 hover:scale-105" key={book.id} to={`/${book.id}`}>
                 <FranchiseElement
                   name={book.id}
                   fullTitle={book.title}

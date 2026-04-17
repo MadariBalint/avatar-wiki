@@ -34,7 +34,7 @@ function MobileOnlyFranchise() {
           Movies:
         </div>
         {movies.map((movie) => (
-          <Link key={movie.id} to={`/${movie.id}`}>
+          <Link className="transition-all duration-150 hover:scale-105" key={movie.id} to={`/${movie.id}`}>
             <FranchiseElement
               name={movie.id}
               fullTitle={movie.title}

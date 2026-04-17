@@ -1,7 +1,7 @@
 import { useEffect, useMemo, useRef, useState } from "react";
 import Menu from "./Menu";
 import { MenuIcon, Search, X } from "lucide-react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import useLockBodyScroll from "../utils/useLockBodyScroll";
 
 import logo from "../assets/logo.webp";
@@ -13,8 +13,7 @@ function Header({ allData, isScrolled }) {
   const [open, setOpen] = useState(false);
   const [openSearch, setOpenSearch] = useState(false)
   const menuRef = useRef(null);
-
-
+  const location = useLocation()
 
   const searchRef = useRef(null);
 
@@ -117,6 +116,21 @@ function Header({ allData, isScrolled }) {
   }, [open]);
   useLockBodyScroll(open);
 
+  useEffect( ()=> {
+    setOpenSearch(false)
+    setIsSearchOpen(false);
+    setQuery("");
+    setIsInFocus(false);
+  },[location.pathname])
+
+  useEffect( () => {
+    if(!openSearch){
+      setIsSearchOpen(false);
+      setQuery("");
+      setIsInFocus(false);
+    }
+  },[openSearch])
+
   return (
     <nav className="sticky flex flex-col  top-0 z-50">
       <div className={`flex flex-row w-full h-32 md:h-24 lg:h-20 transition-all duration-300  items-center justify-between bg-sky-100 `}>
@@ -129,12 +143,14 @@ function Header({ allData, isScrolled }) {
             />
           </Link>
         </div>
-        <div className="mr-12 ml-auto flex flex-row gap-5 md:hidden">
-          <button onClick={() => setOpenSearch((prev) => !prev)}>
+        <div className="mr-12 ml-auto flex flex-row gap-3 md:hidden">
+          <button 
+            className="p-2"
+            onClick={() => setOpenSearch((prev) => !prev)}>
             {openSearch && !open ? <X /> : <Search />}
           </button>
           <button
-
+            className="p-2"
             onClick={() => setOpen((prev) => !prev)}
           >
             {open ? <X /> : <MenuIcon />}

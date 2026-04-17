@@ -41,8 +41,8 @@ function MediumFranchise() {
                 to={`/${movie.id}`}
                 className={
                   i === movies.length - 1 && movies.length % 2 === 1
-                    ? "col-span-2"
-                    : ""
+                    ? "col-span-2 transition-all duration-150 hover:scale-105"
+                    : "transition-all duration-150 hover:scale-105"
                 }
               >
                 <FranchiseElement
@@ -64,8 +64,8 @@ function MediumFranchise() {
               to={`/${game.id}`}
               className={
                 i === games.length - 1 && games.length % 2 === 1
-                  ? "col-span-2"
-                  : ""
+                  ? "col-span-2 transition-all duration-150 hover:scale-105"
+                  : "transition-all duration-150 hover:scale-105"
               }
             >
               <FranchiseElement
@@ -86,8 +86,8 @@ function MediumFranchise() {
               to={`/${comic.id}`}
               className={
                 i === comics.length - 1 && comics.length % 2 === 1
-                  ? "col-span-2"
-                  : ""
+                  ? "col-span-2 transition-all duration-150 hover:scale-105"
+                  : " transition-all duration-150 hover:scale-105"
               }
             >
               <FranchiseElement
@@ -108,8 +108,8 @@ function MediumFranchise() {
               to={`/${book.id}`}
               className={
                 i === books.length - 1 && books.length % 2 === 1
-                  ? "col-span-2"
-                  : ""
+                  ? "col-span-2 transition-all duration-150 hover:scale-105"
+                  : "transition-all duration-150 hover:scale-105"
               }
             >
               <FranchiseElement

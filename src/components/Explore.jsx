@@ -22,40 +22,40 @@ function Explore() {
       <Section>
         <SectionHeading title={`Explore`} />
         <div className="grid grid-cols-6 justify-center justify-items-center gap-y-3 py-3 lg:grid-cols-[repeat(6,max-content)] lg:gap-x-3">
-          <Link to="/avatar">
+          <Link className="transition-all duration-250 hover:scale-115" to="/avatar">
             <ExploreItem file={avatarLogo} />
           </Link>
-          <Link to="/avatar-twow">
+          <Link className="transition-all duration-250 hover:scale-115" to="/avatar-twow">
             <ExploreItem file={avatarTwowLogo} />
           </Link>
-          <Link to="/avatar-faa">
+          <Link className="transition-all duration-250 hover:scale-115" to="/avatar-faa">
             <ExploreItem file={avatarFaaLogo} />
           </Link>
-          <Link to="/category:games">
+          <Link className="transition-all duration-250 hover:scale-115" to="/category:games">
             <ExploreItem file={gamesLogo} />
           </Link>
-          <Link to="/category:avatars">
+          <Link className="transition-all duration-250 hover:scale-115" to="/category:avatars">
             <ExploreItem file={avatarsLogo} />
           </Link>
-          <Link to="/category:navi">
+          <Link className="transition-all duration-250 hover:scale-115" to="/category:navi">
             <ExploreItem file={naviLogo} />
           </Link>
-          <Link to="/category:humans">
+          <Link className="transition-all duration-250 hover:scale-115" to="/category:humans">
             <ExploreItem file={humanLogo} />
           </Link>
-          <Link to="/category:flora">
+          <Link className="transition-all duration-250 hover:scale-115" to="/category:flora">
             <ExploreItem file={floraLogo} />
           </Link>
-          <Link to="/category:fauna">
+          <Link className="transition-all duration-250 hover:scale-115" to="/category:fauna">
             <ExploreItem file={faunaLogo} />
           </Link>
-          <Link to="/category:rda">
+          <Link className="transition-all duration-250 hover:scale-115" to="/category:rda">
             <ExploreItem file={rdaLogo} />
           </Link>
-          <Link to="/category:vehicles">
+          <Link className="transition-all duration-250 hover:scale-115" to="/category:vehicles">
             <ExploreItem file={vehicleLogo} />
           </Link>
-          <Link to="/category:weapons">
+          <Link className="transition-all duration-250 hover:scale-115" to="/category:weapons">
             <ExploreItem file={gunLogo} />
           </Link>
         </div>
