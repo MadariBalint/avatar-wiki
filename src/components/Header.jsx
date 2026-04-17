@@ -92,9 +92,9 @@ function Header({ allData }) {
   }, [query, searchRecords]);
 
   const [open, setOpen] = useState(false);
-  const [openSearch, setOpenSearch] = useState(true)
+  const [openSearch, setOpenSearch] = useState(false)
   const menuRef = useRef(null);
-  const searchBarRef = useRef(null)
+  
 
   useEffect(() => {
     function handleClickOutside(event) {
@@ -221,6 +221,7 @@ function Header({ allData }) {
                       onClick={() => {
                         setQuery("");
                         setIsSearchOpen(false);
+                        setOpenSearch(false)
                       }}
                     >
                       <div>{result.label}</div>
