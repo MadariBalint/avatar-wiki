@@ -14,7 +14,7 @@ function Header({ allData, isScrolled }) {
   const [openSearch, setOpenSearch] = useState(false)
   const menuRef = useRef(null);
 
-  console.log(window.scrollY)
+  
 
   const searchRef = useRef(null);
 
@@ -119,7 +119,7 @@ function Header({ allData, isScrolled }) {
 
   return (
     <>
-      <div className={`fixed w-full top-0 z-50 ${isScrolled ? "h-32 md:h-28 lg:h-16" : "h-40 md:h-36 lg:h-32"} flex flex-row items-center justify-between bg-sky-100 transition-all duration-300`}>
+      <div className={`fixed w-full top-0 z-50 ${isScrolled ? "h-24 md:h-16 lg:h-12" : "h-40 md:h-36 lg:h-32"} flex flex-row items-center justify-between bg-sky-100 transition-all duration-300`}>
         <div className="h-full max-w-[50%] md:max-w-[30%]">
           <Link to="/">
             <img

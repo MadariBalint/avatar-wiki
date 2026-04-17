@@ -125,7 +125,7 @@ function App() {
     <>
       <Header allData={allData} isScrolled={isScrolled} />
       <ScrollToTop />
-      <main className={`${isScrolled ? "pt-32 md:pt-28 lg:pt-16" : "pt-40 md:pt-36 lg:pt-32"}`}>
+      <main className={`${isScrolled ? "pt-24 md:pt-16 lg:pt-12" : "pt-40 md:pt-36 lg:pt-32"}`}>
 
       <Routes>
         <Route
