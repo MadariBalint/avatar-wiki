@@ -3,12 +3,14 @@ import CategoryBox from "../components/CategoryBox";
 import { useMemo } from "react";
 
 function Rda({ allData, ABC }) {
-  const data = allData.filter(
-    (e) =>
-      e.articleType === "rda" ||
-      e.affiliations?.filter((el) => el.id === "rda").length > 0 ||
-      e.residentIds?.filter((el) => el === "rda" || el === "human").length > 0
-  );
+  const data = useMemo(() => {
+    return allData.filter(
+      (e) =>
+        e.articleType === "rda" ||
+        e.affiliations?.filter((el) => el.id === "rda").length > 0 ||
+        e.residentIds?.filter((el) => el === "rda" || el === "human").length > 0
+    );
+  }, [allData]);
 
   const selectedData = useMemo(() => {
     if (!data.length) return [];

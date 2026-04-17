@@ -32,6 +32,7 @@ function Vehicles({ ABC }) {
 
   const selectedData = useMemo(() => {
     if (!data.length) return [];
+
     const shuffled = [...data].sort(() => Math.random() - 0.5);
     return data.length <= 8 ? data : shuffled.slice(0, 8);
   }, [data]);

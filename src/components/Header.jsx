@@ -6,14 +6,14 @@ import useLockBodyScroll from "../utils/useLockBodyScroll";
 
 import logo from "../assets/logo.webp";
 
-function Header({ allData, isScrolled }) {
+function Header({ allData }) {
   const [query, setQuery] = useState("");
   const [isSearchOpen, setIsSearchOpen] = useState(false);
-  const [isInFocus, setIsInFocus] = useState(false)
+  const [isInFocus, setIsInFocus] = useState(false);
   const [open, setOpen] = useState(false);
-  const [openSearch, setOpenSearch] = useState(false)
+  const [openSearch, setOpenSearch] = useState(false);
   const menuRef = useRef(null);
-  const location = useLocation()
+  const location = useLocation();
 
   const searchRef = useRef(null);
 
@@ -40,14 +40,14 @@ function Header({ allData, isScrolled }) {
         .join(" ")
         .toLowerCase();
 
-      const hasPage = entry.hasPage
+      const hasPage = entry.hasPage;
 
       return {
         id: entry.id,
         label,
         type,
         searchableText,
-        hasPage
+        hasPage,
       };
     });
   }, [allData]);
@@ -56,7 +56,6 @@ function Header({ allData, isScrolled }) {
     const trimmedQuery = query.trim().toLowerCase();
 
     if (!trimmedQuery) return [];
-
 
     const exactMatches = [];
     const startsWithMatches = [];
@@ -67,23 +66,25 @@ function Header({ allData, isScrolled }) {
       const id = record.id.toLowerCase();
       const type = record.type.toLowerCase();
 
-
       if (
         labelLower === trimmedQuery ||
         id === trimmedQuery ||
-        type === trimmedQuery || labelLower.replace(":", "") === trimmedQuery
+        type === trimmedQuery ||
+        labelLower.replace(":", "") === trimmedQuery
       ) {
         record.hasPage && exactMatches.push(record);
       } else if (
         labelLower.startsWith(trimmedQuery) ||
         id.startsWith(trimmedQuery) ||
-        type.startsWith(trimmedQuery) || labelLower.replace(":", "").startsWith(trimmedQuery)
+        type.startsWith(trimmedQuery) ||
+        labelLower.replace(":", "").startsWith(trimmedQuery)
       ) {
         record.hasPage && startsWithMatches.push(record);
       } else if (
         labelLower.includes(trimmedQuery) ||
         id.includes(trimmedQuery) ||
-        type.includes(trimmedQuery) || labelLower.replace(":", "").includes(trimmedQuery)
+        type.includes(trimmedQuery) ||
+        labelLower.replace(":", "").includes(trimmedQuery)
       ) {
         record.hasPage && includesMatches.push(record);
       }
@@ -95,12 +96,8 @@ function Header({ allData, isScrolled }) {
     );
   }, [query, searchRecords]);
 
-
-
-
   useEffect(() => {
     function handleClickOutside(event) {
-
       if (menuRef.current && !menuRef.current.contains(event.target)) {
         setOpen(false);
       }
@@ -116,24 +113,26 @@ function Header({ allData, isScrolled }) {
   }, [open]);
   useLockBodyScroll(open);
 
-  useEffect( ()=> {
-    setOpenSearch(false)
+  useEffect(() => {
+    setOpenSearch(false);
     setIsSearchOpen(false);
     setQuery("");
     setIsInFocus(false);
-  },[location.pathname])
+  }, [location.pathname]);
 
-  useEffect( () => {
-    if(!openSearch){
+  useEffect(() => {
+    if (!openSearch) {
       setIsSearchOpen(false);
       setQuery("");
       setIsInFocus(false);
     }
-  },[openSearch])
+  }, [openSearch]);
 
   return (
-    <nav className="sticky flex flex-col  top-0 z-50">
-      <div className={`flex flex-row w-full h-32 md:h-24 lg:h-20 transition-all duration-300  items-center justify-between bg-sky-100 `}>
+    <nav className="sticky top-0 z-50 flex flex-col">
+      <div
+        className={`flex h-32 w-full flex-row items-center justify-between bg-sky-100 transition-all duration-300 md:h-24 lg:h-20`}
+      >
         <div className="h-full max-w-[50%] md:max-w-[30%]">
           <Link to="/">
             <img
@@ -144,23 +143,18 @@ function Header({ allData, isScrolled }) {
           </Link>
         </div>
         <div className="mr-12 ml-auto flex flex-row gap-3 md:hidden">
-          <button 
-            className="p-2"
-            onClick={() => setOpenSearch((prev) => !prev)}>
-            {openSearch && !open ? <X /> : <Search />}
-          </button>
           <button
             className="p-2"
-            onClick={() => setOpen((prev) => !prev)}
+            onClick={() => setOpenSearch((prev) => !prev)}
           >
+            {openSearch && !open ? <X /> : <Search />}
+          </button>
+          <button className="p-2" onClick={() => setOpen((prev) => !prev)}>
             {open ? <X /> : <MenuIcon />}
           </button>
-
         </div>
 
-
-
-        <div className="hidden md:block md:flex md:gap-5 md:grow md:justify-end ">
+        <div className="hidden md:block md:flex md:grow md:justify-end md:gap-5">
           <div ref={searchRef} className="relative grow">
             <input
               type="text"
@@ -172,16 +166,18 @@ function Header({ allData, isScrolled }) {
                 setIsSearchOpen(value.trim().length > 0);
               }}
               onFocus={() => {
-                setIsInFocus(true)
+                setIsInFocus(true);
                 if (query.trim()) setIsSearchOpen(true);
               }}
               onBlur={() => {
-                setIsInFocus(false)
+                setIsInFocus(false);
               }}
-              className={`w-full px-3 py-1 border border-2 outline-none ${isInFocus === true ? "focus:border-sky-600/70" : "border-sky-600/10"} ${isSearchOpen === false ? "rounded-lg" : "rounded-t-lg"}`}
+              className={`w-full border border-2 px-3 py-1 outline-none ${isInFocus === true ? "focus:border-sky-600/70" : "border-sky-600/10"} ${isSearchOpen === false ? "rounded-lg" : "rounded-t-lg"}`}
             />
             {isSearchOpen && query.trim() && (
-              <div className={`absolute left-0 top-full px-3 py-1 border border-2 border-t-0 outline-none ${isInFocus === true ? "border-sky-600/70" : "border-sky-600/10"} rounded-b-lg w-full bg-sky-100`}>
+              <div
+                className={`absolute top-full left-0 border border-2 border-t-0 px-3 py-1 outline-none ${isInFocus === true ? "border-sky-600/70" : "border-sky-600/10"} w-full rounded-b-lg bg-sky-100`}
+              >
                 {filteredResults.length > 0 ? (
                   filteredResults.map((result) => (
                     <Link
@@ -206,13 +202,13 @@ function Header({ allData, isScrolled }) {
         </div>
       </div>
       {open && (
-        <div ref={menuRef} className="md:hidden bg-sky-100 grow">
+        <div ref={menuRef} className="grow bg-sky-100 md:hidden">
           <Menu closeMenu={() => setOpen(false)} />
         </div>
       )}
       {openSearch && !open && (
-        <div ref={searchRef} className="grow md:hidden h-full bg-sky-100 mb-5">
-          <div className="relative mx-15 ">
+        <div ref={searchRef} className="mb-5 h-full grow bg-sky-100 md:hidden">
+          <div className="relative mx-15">
             <input
               type="text"
               value={query}
@@ -223,16 +219,18 @@ function Header({ allData, isScrolled }) {
                 setIsSearchOpen(value.trim().length > 0);
               }}
               onFocus={() => {
-                setIsInFocus(true)
+                setIsInFocus(true);
                 if (query.trim()) setIsSearchOpen(true);
               }}
               onBlur={() => {
-                setIsInFocus(false)
+                setIsInFocus(false);
               }}
-              className={`w-full px-3 py-1 border border-2 outline-none ${isInFocus === true ? "focus:border-sky-600/70" : "border-sky-600/10"} ${isSearchOpen === false ? "rounded-lg" : "rounded-t-lg"}`}
+              className={`w-full border border-2 px-3 py-1 outline-none ${isInFocus === true ? "focus:border-sky-600/70" : "border-sky-600/10"} ${isSearchOpen === false ? "rounded-lg" : "rounded-t-lg"}`}
             />
             {isSearchOpen && query.trim() && (
-              <div className={`absolute left-0 top-full  px-3 py-1 border border-2 border-t-0 outline-none ${isInFocus === true ? "border-sky-600/70" : "border-sky-600/10"} rounded-b-lg w-full bg-sky-100`}>
+              <div
+                className={`absolute top-full left-0 border border-2 border-t-0 px-3 py-1 outline-none ${isInFocus === true ? "border-sky-600/70" : "border-sky-600/10"} w-full rounded-b-lg bg-sky-100`}
+              >
                 {filteredResults.length > 0 ? (
                   filteredResults.map((result) => (
                     <Link
@@ -241,7 +239,7 @@ function Header({ allData, isScrolled }) {
                       onClick={() => {
                         setQuery("");
                         setIsSearchOpen(false);
-                        setOpenSearch(false)
+                        setOpenSearch(false);
                       }}
                     >
                       <div>{result.label}</div>
@@ -253,9 +251,7 @@ function Header({ allData, isScrolled }) {
                 )}
               </div>
             )}
-
           </div>
-
         </div>
       )}
     </nav>

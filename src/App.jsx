@@ -99,18 +99,6 @@ function App() {
   }, []);
 
   const wikiIndex = useMemo(() => buildWikiIndex(allData), [allData]);
-  
-  const [isScrolled, setIsScrolled] = useState(false)
-
-   useEffect(()=> {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 60)
-    }
-
-    window.addEventListener("scroll", handleScroll)
-    return () => window.removeEventListener("scroll", handleScroll)
-  }, [])
-  
 
   if (loading) {
     return (
@@ -123,23 +111,23 @@ function App() {
 
   return (
     <>
-      <Header allData={allData} isScrolled={isScrolled} />
+      <Header allData={allData} />
       <ScrollToTop />
       <Routes>
         <Route
           path="/:slug"
           element={<Article allData={allData} wikiIndex={wikiIndex} />}
-          />
+        />
         <Route path="/" element={<Home />} />
         <Route
           path="/category:characters"
           element={<Characters ABC={alphabet} />}
-          />
+        />
         <Route path="/category:navi" element={<Navi ABC={alphabet} />} />
         <Route
           path="/category:rda"
           element={<Rda ABC={alphabet} allData={allData} />}
-          />
+        />
         <Route path="/category:flora" element={<Flora ABC={alphabet} />} />
         <Route path="/category:fauna" element={<Fauna ABC={alphabet} />} />
         <Route path="/category:games" element={<Games ABC={alphabet} />} />
@@ -151,7 +139,6 @@ function App() {
           element={<Vehicles ABC={alphabet} />}
         />
       </Routes>
-      
     </>
   );
 }
