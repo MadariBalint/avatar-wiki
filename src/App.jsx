@@ -1,4 +1,4 @@
-import { Route, Routes } from "react-router-dom";
+import { Route, Routes, useLocation } from "react-router-dom";
 import { useEffect, useMemo, useState } from "react";
 
 import Home from "./pages/Home";
@@ -14,11 +14,13 @@ import Spinner from "./components/Spinner";
 
 import { buildWikiIndex } from "./utils/wikiIndex";
 import ScrollToTop from "./components/ScrollToTop";
+import PageTransition from "./components/PageTransition";
 import Games from "./pages/Games";
 import Avatars from "./pages/Avatars";
 import Humans from "./pages/Humans";
 import Weapons from "./pages/Weapons";
 import Vehicles from "./pages/Vehicles";
+import { AnimatePresence } from "motion/react";
 
 const alphabet = [
   "A",
@@ -53,6 +55,8 @@ function App() {
   const [allData, setAllData] = useState([]);
 
   const [loading, setLoading] = useState(true);
+
+  const location = useLocation();
 
   useEffect(() => {
     async function loadAllData() {
@@ -113,32 +117,106 @@ function App() {
     <>
       <Header allData={allData} />
       <ScrollToTop />
-      <Routes>
-        <Route
-          path="/:slug"
-          element={<Article allData={allData} wikiIndex={wikiIndex} />}
-        />
-        <Route path="/" element={<Home />} />
-        <Route
-          path="/category:characters"
-          element={<Characters ABC={alphabet} />}
-        />
-        <Route path="/category:navi" element={<Navi ABC={alphabet} />} />
-        <Route
-          path="/category:rda"
-          element={<Rda ABC={alphabet} allData={allData} />}
-        />
-        <Route path="/category:flora" element={<Flora ABC={alphabet} />} />
-        <Route path="/category:fauna" element={<Fauna ABC={alphabet} />} />
-        <Route path="/category:games" element={<Games ABC={alphabet} />} />
-        <Route path="/category:avatars" element={<Avatars ABC={alphabet} />} />
-        <Route path="/category:humans" element={<Humans ABC={alphabet} />} />
-        <Route path="/category:weapons" element={<Weapons ABC={alphabet} />} />
-        <Route
-          path="/category:vehicles"
-          element={<Vehicles ABC={alphabet} />}
-        />
-      </Routes>
+      <AnimatePresence mode="wait">
+        <Routes location={location} key={location.pathname}>
+          <Route
+            path="/:slug"
+            element={
+              <PageTransition>
+                <Article allData={allData} wikiIndex={wikiIndex} />
+              </PageTransition>
+            }
+          />
+          <Route
+            path="/"
+            element={
+              <PageTransition>
+                <Home />
+              </PageTransition>
+            }
+          />
+          <Route
+            path="/category:characters"
+            element={
+              <PageTransition>
+                <Characters ABC={alphabet} />
+              </PageTransition>
+            }
+          />
+          <Route
+            path="/category:navi"
+            element={
+              <PageTransition>
+                <Navi ABC={alphabet} />
+              </PageTransition>
+            }
+          />
+          <Route
+            path="/category:rda"
+            element={
+              <PageTransition>
+                <Rda ABC={alphabet} allData={allData} />
+              </PageTransition>
+            }
+          />
+          <Route
+            path="/category:flora"
+            element={
+              <PageTransition>
+                <Flora ABC={alphabet} />
+              </PageTransition>
+            }
+          />
+          <Route
+            path="/category:fauna"
+            element={
+              <PageTransition>
+                <Fauna ABC={alphabet} />
+              </PageTransition>
+            }
+          />
+          <Route
+            path="/category:games"
+            element={
+              <PageTransition>
+                <Games ABC={alphabet} />
+              </PageTransition>
+            }
+          />
+          <Route
+            path="/category:avatars"
+            element={
+              <PageTransition>
+                <Avatars ABC={alphabet} />
+              </PageTransition>
+            }
+          />
+          <Route
+            path="/category:humans"
+            element={
+              <PageTransition>
+                <Humans ABC={alphabet} />
+              </PageTransition>
+            }
+          />
+          <Route
+            path="/category:weapons"
+            element={
+              <PageTransition>
+                <Weapons ABC={alphabet} />
+              </PageTransition>
+            }
+          />
+          <Route
+            path="/category:vehicles"
+            element={
+              <PageTransition>
+                <Vehicles ABC={alphabet} />
+              </PageTransition>
+            }
+          />
+        </Routes>
+      </AnimatePresence>
     </>
   );
 }

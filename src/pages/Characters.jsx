@@ -44,7 +44,7 @@ function Characters({ ABC }) {
   }
 
   return (
-    <div>
+    <>
       <div className="flex flex-col items-center gap-10">
         <span className="text-center font-[PapyrusWeb] text-3xl md:text-4xl lg:text-5xl">
           Characters of the Avatar universe
@@ -89,7 +89,7 @@ function Characters({ ABC }) {
           );
         })}
       </div>
-    </div>
+    </>
   );
 }
 
