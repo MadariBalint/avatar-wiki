@@ -1,4 +1,4 @@
-function FloraInfoBoxRow({ label, info, renderInfo, allData }) {
+function LocationInfoBoxRow({ label, info, renderInfo, allData }) {
   const isList = Array.isArray(info)
     ? info.length > 1
     : info && typeof info === "object"
@@ -27,4 +27,4 @@ function FloraInfoBoxRow({ label, info, renderInfo, allData }) {
   );
 }
 
-export default FloraInfoBoxRow;
+export default LocationInfoBoxRow;

@@ -8,6 +8,7 @@ import MarkdownRenderer from "../components/MarkdownRenderer";
 import Spinner from "../components/Spinner";
 import FaunaInfoBox from "../components/FaunaInfoBox";
 import FloraInfoBox from "../components/FloraInfoBox";
+import LocationInfoBox from "../components/LocationInfoBox";
 
 function Article({ allData, wikiIndex }) {
   const { slug } = useParams();
@@ -58,7 +59,7 @@ function Article({ allData, wikiIndex }) {
 
   if (loading) {
     return (
-      <div className="h-svh flex justify-center items-center gap-3 font-[PapyrusWeb] text-6xl">
+      <div className="flex h-svh items-center justify-center gap-3 font-[PapyrusWeb] text-6xl">
         <Spinner />
         <span>Loading...</span>
       </div>
@@ -73,7 +74,7 @@ function Article({ allData, wikiIndex }) {
     );
   }
   const resolvedMarkdown = resolveWikiLinks(rawMarkdown, wikiIndex);
-  
+
   const infoData = allData.find((item) => item.id === slug);
   return (
     <div className="flex flex-col md:mx-auto md:block md:max-w-3xl lg:max-w-5xl">
@@ -84,8 +85,15 @@ function Article({ allData, wikiIndex }) {
         {infoData?.articleType === "characters" && (
           <CharacterInfoBox data={infoData} allData={allData} />
         )}
-        {infoData?.articleType === "fauna" && <FaunaInfoBox data={infoData} allData={allData} />}
-        {infoData?.articleType === "flora" && <FloraInfoBox data={infoData} allData={allData} />}
+        {infoData?.articleType === "fauna" && (
+          <FaunaInfoBox data={infoData} allData={allData} />
+        )}
+        {infoData?.articleType === "flora" && (
+          <FloraInfoBox data={infoData} allData={allData} />
+        )}
+        {infoData?.articleType === "locations" && (
+          <LocationInfoBox data={infoData} allData={allData} />
+        )}
       </div>
       <div className="px-10 md:px-0 md:pt-1">
         <MarkdownRenderer content={resolvedMarkdown} />

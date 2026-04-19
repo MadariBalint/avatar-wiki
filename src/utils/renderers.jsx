@@ -1,10 +1,9 @@
 import { formatDate } from "./formatDate";
 
-
 import InfoBrackets from "../components/InfoBrackets";
 import InternalLink from "../components/InternalLink";
 
-export function renderBorn(info) { 
+export function renderBorn(info) {
   const renderExtra = Object.keys(info).length > 1;
   return Object.entries(info).map(([type, date]) => {
     return (
@@ -17,21 +16,23 @@ export function renderBorn(info) {
 }
 
 export function renderAliases(info, data) {
-  const needsLink = data.some((e) => e.id === info)
+  const needsLink = data.some((e) => e.id === info);
 
   return info.map((el) => {
     return (
       <li key={el.alias}>
-        {needsLink && <InternalLink href={info}>
-          {el.alias}
-          {el.note && <InfoBrackets>{el.note}</InfoBrackets>}
-        </InternalLink>}
-        {!needsLink && <>
-          {el.alias}
-          {el.note && <InfoBrackets>{el.note}</InfoBrackets>}
-        </>
-        }
-
+        {needsLink && (
+          <InternalLink href={info}>
+            {el.alias}
+            {el.note && <InfoBrackets>{el.note}</InfoBrackets>}
+          </InternalLink>
+        )}
+        {!needsLink && (
+          <>
+            {el.alias}
+            {el.note && <InfoBrackets>{el.note}</InfoBrackets>}
+          </>
+        )}
       </li>
     );
   });
@@ -78,15 +79,18 @@ export function renderPeriod(period) {
 }
 
 export function renderHomeHistory(homeHistory, data) {
-  let needsLink
+  let needsLink;
   return homeHistory.map((home) => {
-    needsLink = data.some((e) => e.id === home.locationId && e.hasPage === true)
+    needsLink = data.some(
+      (e) => e.id === home.locationId && e.hasPage === true
+    );
     return (
       <li key={home.locationId}>
         {needsLink && (
           <InternalLink href={home.locationId}>
             {data.find((el) => el.id === home.locationId).name}
-          </InternalLink>)}
+          </InternalLink>
+        )}
         {!needsLink && data.find((el) => el.id === home.locationId).name}
 
         {home.period && (
@@ -98,14 +102,18 @@ export function renderHomeHistory(homeHistory, data) {
 }
 
 export function renderFamily(members, data) {
-  let needsLink
+  let needsLink;
   return members.map((member) => {
-    needsLink = data.some((e)=> e.id === member.id && e.hasPage === true)
-    console.log(needsLink)
+    needsLink = data.some((e) => e.id === member.id && e.hasPage === true);
+    console.log(needsLink);
     return (
       <li key={member.id}>
-        {needsLink && <InternalLink href={member.id}>{data.find((el)=> el.id === member.id).name}</InternalLink>}
-        {!needsLink && data.find((el)=> el.id === member.id).name}
+        {needsLink && (
+          <InternalLink href={member.id}>
+            {data.find((el) => el.id === member.id).name}
+          </InternalLink>
+        )}
+        {!needsLink && data.find((el) => el.id === member.id).name}
         <InfoBrackets>{`${member.order ? member.order + " " : ""}${member.relation ? member.relation : ""}`}</InfoBrackets>
       </li>
     );
@@ -113,16 +121,17 @@ export function renderFamily(members, data) {
 }
 
 export function renderOccupation(occ, data) {
-  let needsLink
+  let needsLink;
   return occ.map((el, i) => {
-    needsLink = data.some(e => e.id === el.id && e.hasPage === true)
+    needsLink = data.some((e) => e.id === el.id && e.hasPage === true);
     return (
       <li key={i}>
         {needsLink && (
           <InternalLink href={el.id}>
             {el.occupation}
             {el.note && <InfoBrackets>{el.note}</InfoBrackets>}
-          </InternalLink>)}
+          </InternalLink>
+        )}
         {!needsLink && (
           <>
             {el.occupation}
@@ -135,12 +144,16 @@ export function renderOccupation(occ, data) {
 }
 
 export function renderAffiliation(aff, data) {
-  let needsLink
+  let needsLink;
   return aff.map((el) => {
-    needsLink = data.some(e =>(e.id === el.id  && e.hasPage === true ) )
+    needsLink = data.some((e) => e.id === el.id && e.hasPage === true);
     return (
       <li key={el.id}>
-        {needsLink && <InternalLink href={el.id}>{data.find((e) => e.id === el.id).name}</InternalLink>  }
+        {needsLink && (
+          <InternalLink href={el.id}>
+            {data.find((e) => e.id === el.id).name}
+          </InternalLink>
+        )}
         {!needsLink && data.find((e) => e.id === el.id).name}
 
         {el.status ? <InfoBrackets>{el.status}</InfoBrackets> : ""}
@@ -161,16 +174,26 @@ export function renderAffiliation(aff, data) {
 }
 
 export function renderSeen(seen, data) {
-  const needsLink = data.some((e)=> e.id === seen)
+  const needsLink = data.some((e) => e.id === seen);
 
-
-  if(seen === "pandorapedia")
-  if(seen === "pandorapedia") {return <li className="text-sky-600 hover:underline "><a href="https://www.avatar.com/pandorapedia">Pandorapedia</a></li>}
-  return <li >
-      {needsLink && 
-        <InternalLink href={seen}>{data.find((e) => e.id === seen)?.title}</InternalLink>}
+  if (seen === "pandorapedia")
+    if (seen === "pandorapedia") {
+      return (
+        <li className="text-sky-600 hover:underline">
+          <a href="https://www.avatar.com/pandorapedia">Pandorapedia</a>
+        </li>
+      );
+    }
+  return (
+    <li>
+      {needsLink && (
+        <InternalLink href={seen}>
+          {data.find((e) => e.id === seen)?.title}
+        </InternalLink>
+      )}
       {!needsLink && data.find((e) => e.id === seen)?.title}
-  </li>;
+    </li>
+  );
 }
 
 export function renderHabitat(habitat, data) {
@@ -241,4 +264,50 @@ export function renderHairColorFauna(color) {
   return (
     <li>{color.map((x) => x[0].toUpperCase() + x.slice(1)).join(" - ")}</li>
   );
+}
+
+export function renderLocation(location, data) {
+  let loc = data.find((el) => el.id === location);
+  return (
+    <li>
+      {loc?.hasPage && <InternalLink href={location}>{loc.name}</InternalLink>}
+      {!loc?.hasPage && loc.name}
+    </li>
+  );
+}
+
+export function renderResidents(residents, data) {
+  return residents.map((res) => {
+    if (res === "human") return <li key={res}>Humans</li>;
+    let resident = data.find((e) => e.id === res);
+    if (resident.humanName)
+      return (
+        <li key={res}>
+          {resident.hasPage && (
+            <InternalLink href={resident.id}>
+              {resident?.humanName}
+            </InternalLink>
+          )}
+          {!resident.hasPage && resident?.humanName}
+        </li>
+      );
+    if (resident.naviName)
+      return (
+        <li key={res}>
+          {resident.hasPage && (
+            <InternalLink href={resident.id}>{resident?.naviName}</InternalLink>
+          )}
+          {!resident.hasPage && resident?.naviName}
+        </li>
+      );
+    if (resident.name)
+      return (
+        <li key={res}>
+          {resident.hasPage && (
+            <InternalLink href={resident.id}>{resident?.name}</InternalLink>
+          )}
+          {!resident.hasPage && resident?.name}
+        </li>
+      );
+  });
 }

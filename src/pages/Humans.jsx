@@ -1,12 +1,26 @@
 import { useEffect, useMemo, useState } from "react";
-import Spinner from "../components/Spinner";
+import { motion } from "motion/react";
 import { Link } from "react-router-dom";
+
+import Spinner from "../components/Spinner";
 import CategoryBox from "../components/CategoryBox";
+import InternalLink from "../components/InternalLink";
+
+import { itemVariants, containerVariants } from "../utils/helpers";
+import usePreloadImages from "../utils/usePreloadImages";
 
 function Humans({ ABC }) {
   const [data, setData] = useState([]);
 
   const [loading, setLoading] = useState(true);
+
+  const selectedData = useMemo(() => {
+    if (!data.length) return [];
+    const shuffled = [...data].sort(() => Math.random() - 0.5);
+    return data.length <= 8 ? data : shuffled.slice(0, 8);
+  }, [data]);
+
+  const imagesReady = usePreloadImages(selectedData);
 
   useEffect(() => {
     async function loadHumans() {
@@ -28,12 +42,6 @@ function Humans({ ABC }) {
     loadHumans();
   }, []);
 
-  const selectedData = useMemo(() => {
-    if (!data.length) return [];
-    const shuffled = [...data].sort(() => Math.random() - 0.5);
-    return data.length <= 8 ? data : shuffled.slice(0, 8);
-  }, [data]);
-
   if (loading) {
     return (
       <div className="flex h-svh items-center justify-center gap-3 font-[PapyrusWeb] text-6xl">
@@ -49,17 +57,24 @@ function Humans({ ABC }) {
         <span className="text-center font-[PapyrusWeb] text-3xl md:text-4xl lg:text-5xl">
           Important human characters
         </span>
-        <div className="flex max-w-sm flex-wrap justify-center gap-2 md:max-w-lg md:gap-4 lg:max-w-3xl lg:gap-x-10 lg:gap-y-10 xl:max-w-5xl xl:gap-x-15 xl:gap-y-15">
+        <motion.div
+          className="flex max-w-sm flex-wrap justify-center gap-2 md:max-w-lg md:gap-4 lg:max-w-3xl lg:gap-x-10 lg:gap-y-10 xl:max-w-5xl xl:gap-x-15 xl:gap-y-15"
+          variants={containerVariants}
+          initial="hidden"
+          animate={imagesReady ? "show" : "hidden"}
+        >
           {selectedData.map(
             (el) =>
               el.hasPage &&
               el.speciesIds?.find((el) => el === "human") && (
-                <Link key={el.id} to={`/${el.id}`}>
-                  <CategoryBox identity={el} category="characters" />
-                </Link>
+                <motion.div key={el.id} variants={itemVariants}>
+                  <Link to={`/${el.id}`}>
+                    <CategoryBox identity={el} category="characters" />
+                  </Link>
+                </motion.div>
               )
           )}
-        </div>
+        </motion.div>
       </div>
       <div className="mx-auto mt-10 max-w-sm columns-2 rounded-xl bg-sky-900/20 px-7 py-10 md:max-w-md md:px-15 lg:max-w-xl xl:max-w-3xl">
         {ABC.map((letter) => {
@@ -83,14 +98,18 @@ function Humans({ ABC }) {
                         className="grid grid-cols-4 items-center"
                         key={el.id}
                       >
-                        <img
-                          className="col-start-1 h-12 w-12 object-contain"
-                          src={`/images/characters/${el.id}-face.webp`}
-                          alt=""
-                        />
+                        <InternalLink href={el.id}>
+                          <img
+                            className="col-start-1 h-12 w-12 object-contain transition-all duration-250 hover:scale-105"
+                            src={`/images/characters/${el.id}-face.webp`}
+                            alt=""
+                          />
+                        </InternalLink>
 
                         <div className="col-span-full col-start-2 ml-2">
-                          <Link to={`/${el.id}`}>{el.name}</Link>
+                          <Link className="hover:underline" to={`/${el.id}`}>
+                            {el.name}
+                          </Link>
                         </div>
                       </div>
                     )
