@@ -3,7 +3,7 @@ import { motion } from "motion/react";
 function PageTransition({ children }) {
   return (
     <motion.div
-      className="pt-32 md:pt-24 lg:pt-20 md:pt-5 lg:pt-10"
+      className="min-h-screen"
       initial={{ opacity: 0, y: 10 }}
       animate={{ opacity: 1, y: 0 }}
       exit={{opacity:0}}

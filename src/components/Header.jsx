@@ -129,7 +129,7 @@ function Header({ allData }) {
   }, [openSearch]);
 
   return (
-    <nav className="fixed w-full flex flex-col top-0 z-50">
+    <nav className="sticky top-0 z-50 flex w-full flex-col">
       <div className="relative">
 
       <div className={`flex flex-row w-full h-32 md:h-24 lg:h-20 transition-all duration-300  items-center justify-between bg-sky-100 `}>
