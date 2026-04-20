@@ -6,6 +6,7 @@ function PageTransition({ children }) {
       className="pt-32 md:pt-24 lg:pt-20 md:pt-5 lg:pt-10"
       initial={{ opacity: 0, y: 10 }}
       animate={{ opacity: 1, y: 0 }}
+      exit={{opacity:0}}
       transition={{ duration: 0.3 }}
     >
       {children}
