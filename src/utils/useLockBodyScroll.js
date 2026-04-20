@@ -2,23 +2,16 @@ import { useEffect } from "react";
 
 
 export default function useLockBodyScroll(lock) {
-useEffect(() => {
-  if (lock) {
-    document.body.style.position = "fixed";
-    document.body.style.top = `-${window.scrollY}px`;
-    document.body.style.width = "100%";
-  } else {
-    const scrollY = document.body.style.top;
-    document.body.style.position = "";
-    document.body.style.top = "";
-    document.body.style.width = "";
-    window.scrollTo(0, parseInt(scrollY || "0") * -1);
-  }
+  useEffect(() => {
+    const originalOverflow = document.body.style.overflow;
+    if (lock) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = originalOverflow;
+    }
 
-  return () => {
-    document.body.style.position = "";
-    document.body.style.top = "";
-    document.body.style.width = "";
-  };
-}, [lock]);
+    return () => {
+      document.body.style.overflow = originalOverflow;
+    };
+  }, [lock]);
 }

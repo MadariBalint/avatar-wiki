@@ -68,8 +68,8 @@ function Article({ allData, wikiIndex }) {
 
   if (notFound) {
     return (
-      <div className="mt-10 flex justify-center font-[PapyrusWeb] text-6xl">
-        <span>404 - Article not found</span>
+      <div className="mt-25 flex h-dvh justify-center font-[PapyrusWeb] text-6xl/25">
+        <span className="text-center py-2">404 - Article not found</span>
       </div>
     );
   }

@@ -149,7 +149,7 @@ function Header({ allData }) {
           >
             {openSearch && !open ? <X /> : <Search />}
           </button>
-          <button className="p-2" onClick={() => setOpen((prev) => !prev)}>
+          <button className="p-2" onClick={() =>setOpen((prev) => !prev)}>
             {open ? <X /> : <MenuIcon />}
           </button>
         </div>
