@@ -104,6 +104,16 @@ function App() {
 
   const wikiIndex = useMemo(() => buildWikiIndex(allData), [allData]);
 
+useEffect(()=> {
+  const setVh = () => {
+    document.documentElement.style.setProperty( '--vh', `${window.innerHeight * 0.01}px`)
+  }
+  setVh()
+  window.addEventListener('resize', setVh)
+  return () => window.removeEventListener('resize', setVh)
+}, [])
+
+
   if (loading) {
     return (
       <div className="flex h-svh items-center justify-center gap-3 font-[PapyrusWeb] text-6xl">

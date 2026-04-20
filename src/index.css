@@ -1,5 +1,10 @@
 @import "tailwindcss";
 
+@theme {
+  --height-screen: calc(var(--vh,1vh) * 100);
+  --min-height-screen: calc(vard(--vh, 1vh)* 100);
+}
+
 @plugin "@tailwindcss/typography";
 
 @font-face {
