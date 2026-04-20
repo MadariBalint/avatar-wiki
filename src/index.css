@@ -1,7 +1,5 @@
 @import "tailwindcss";
 
-
-
 @plugin "@tailwindcss/typography";
 
 @font-face {
@@ -12,9 +10,8 @@ html,
 body,
 #root {
   margin: 0;
-  min-height: 100vh;
+  min-height: 100dvh;
   width: 100%;
 
   background-color: rgb(224 242 254); /* Tailwind sky-100 */
 }
-
