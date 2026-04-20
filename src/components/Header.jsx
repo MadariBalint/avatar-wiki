@@ -129,10 +129,10 @@ function Header({ allData }) {
   }, [openSearch]);
 
   return (
-    <nav className="sticky top-0 z-50 flex flex-col">
-      <div
-        className={`flex h-32 w-full flex-row items-center justify-between bg-sky-100 transition-all duration-300 md:h-24 lg:h-20`}
-      >
+    <nav className="sticky flex flex-col  top-0 z-50">
+      <div className="relative">
+
+      <div className={`flex flex-row w-full h-32 md:h-24 lg:h-20 transition-all duration-300  items-center justify-between bg-sky-100 `}>
         <div className="h-full max-w-[50%] md:max-w-[30%]">
           <Link to="/">
             <img
@@ -172,8 +172,8 @@ function Header({ allData }) {
               onBlur={() => {
                 setIsInFocus(false);
               }}
-              className={`w-full border border-2 px-3 py-1 outline-none ${isInFocus === true ? "focus:border-sky-600/70" : "border-sky-600/10"} ${isSearchOpen === false ? "rounded-lg" : "rounded-t-lg"}`}
-            />
+              className={`w-full px-3 py-1 border border-2 outline-none ${isInFocus === true ? "focus:border-sky-600/70" : "border-sky-600/10"} ${isSearchOpen === false ? "rounded-lg" : "rounded-t-lg"}`}
+              />
             {isSearchOpen && query.trim() && (
               <div
                 className={`absolute top-full left-0 border border-2 border-t-0 px-3 py-1 outline-none ${isInFocus === true ? "border-sky-600/70" : "border-sky-600/10"} w-full rounded-b-lg bg-sky-100`}
@@ -181,12 +181,12 @@ function Header({ allData }) {
                 {filteredResults.length > 0 ? (
                   filteredResults.map((result) => (
                     <Link
-                      key={result.id}
-                      to={`/${result.id}`}
-                      onClick={() => {
-                        setQuery("");
-                        setIsSearchOpen(false);
-                      }}
+                    key={result.id}
+                    to={`/${result.id}`}
+                    onClick={() => {
+                      setQuery("");
+                      setIsSearchOpen(false);
+                    }}
                     >
                       <div>{result.label}</div>
                       <small>{result.type}</small>
@@ -202,13 +202,13 @@ function Header({ allData }) {
         </div>
       </div>
       {open && (
-        <div ref={menuRef} className="grow bg-sky-100 md:hidden">
+        <div ref={menuRef} className="md:hidden absolute top-full left-0 w-full pt-5  bg-sky-100 grow">
           <Menu closeMenu={() => setOpen(false)} />
         </div>
       )}
       {openSearch && !open && (
-        <div ref={searchRef} className="mb-5 h-full grow bg-sky-100 md:hidden">
-          <div className="relative mx-15">
+        <div ref={searchRef} className=" absolute top-full left-0 w-full pt-5 md:hidden pb-5  bg-sky-100">
+          <div className="relative mx-15 ">
             <input
               type="text"
               value={query}
@@ -225,8 +225,8 @@ function Header({ allData }) {
               onBlur={() => {
                 setIsInFocus(false);
               }}
-              className={`w-full border border-2 px-3 py-1 outline-none ${isInFocus === true ? "focus:border-sky-600/70" : "border-sky-600/10"} ${isSearchOpen === false ? "rounded-lg" : "rounded-t-lg"}`}
-            />
+              className={`w-full px-3 py-1 border border-2 outline-none ${isInFocus === true ? "focus:border-sky-600/70" : "border-sky-600/10"} ${isSearchOpen === false ? "rounded-lg" : "rounded-t-lg"}`}
+              />
             {isSearchOpen && query.trim() && (
               <div
                 className={`absolute top-full left-0 border border-2 border-t-0 px-3 py-1 outline-none ${isInFocus === true ? "border-sky-600/70" : "border-sky-600/10"} w-full rounded-b-lg bg-sky-100`}
@@ -241,7 +241,7 @@ function Header({ allData }) {
                         setIsSearchOpen(false);
                         setOpenSearch(false);
                       }}
-                    >
+                      >
                       <div>{result.label}</div>
                       <small>{result.type}</small>
                     </Link>
@@ -254,6 +254,7 @@ function Header({ allData }) {
           </div>
         </div>
       )}
+                </div>
     </nav>
   );
 }
