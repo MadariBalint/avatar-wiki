@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 
 function Menu({ closeMenu }) {
   return (
-    <nav className="mb-10 flex flex-col items-center gap-5 lg:mr-10 lg:mb-0 lg:flex-row lg:py-1">
+    <nav className="mb-10 flex flex-col items-center gap-5 md:gap-2 lg:mr-10 lg:mb-0 lg:flex-row lg:py-1">
       <Link
         className="px-5 py-1 transition-all duration-200 hover:rounded-md hover:bg-sky-600/20 hover:shadow-md"
         onClick={closeMenu}

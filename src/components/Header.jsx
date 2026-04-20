@@ -14,7 +14,7 @@ function Header({ allData }) {
   const [openSearch, setOpenSearch] = useState(false);
   const menuRef = useRef(null);
   const location = useLocation();
-  const isMobile = window.innerWidth < 768;
+  const isMedium = 768 < window.innerWidth < 1024;
 
   const searchRef = useRef(null);
 
@@ -112,7 +112,7 @@ function Header({ allData }) {
       document.removeEventListener("mousedown", handleClickOutside);
     };
   }, [open]);
-  useLockBodyScroll(open && isMobile);
+  useLockBodyScroll(open);
 
   useEffect(() => {
     setOpenSearch(false);
