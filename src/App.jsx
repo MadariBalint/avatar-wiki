@@ -119,7 +119,7 @@ function App() {
   return (
     <>
       <Header allData={allData} />
-      <ScrollToTop />
+      <ScrollToTop isReady={!loading} />
       <AnimatePresence mode="wait">
         <Routes location={location} key={location.pathname}>
           <Route

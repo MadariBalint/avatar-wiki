@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useLayoutEffect } from "react";
 import { useLocation } from "react-router-dom";
 
 function scrollToPageTop() {
@@ -9,7 +9,19 @@ function scrollToPageTop() {
   });
 }
 
-function ScrollToTop() {
+function resetScrollPosition() {
+  scrollToPageTop();
+
+  requestAnimationFrame(() => {
+    scrollToPageTop();
+
+    window.setTimeout(() => {
+      scrollToPageTop();
+    }, 150);
+  });
+}
+
+function ScrollToTop({ isReady }) {
   const { pathname } = useLocation();
 
   useEffect(() => {
@@ -21,15 +33,21 @@ function ScrollToTop() {
     }
 
     const handlePageShow = () => {
-      requestAnimationFrame(() => {
-        scrollToPageTop();
-      });
+      resetScrollPosition();
+    };
+
+    const handleVisibilityChange = () => {
+      if (document.visibilityState === "visible") {
+        resetScrollPosition();
+      }
     };
 
     window.addEventListener("pageshow", handlePageShow);
+    document.addEventListener("visibilitychange", handleVisibilityChange);
 
     return () => {
       window.removeEventListener("pageshow", handlePageShow);
+      document.removeEventListener("visibilitychange", handleVisibilityChange);
 
       if ("scrollRestoration" in history) {
         history.scrollRestoration = previousScrollRestoration;
@@ -37,9 +55,15 @@ function ScrollToTop() {
     };
   }, []);
 
-  useEffect(() => {
-    scrollToPageTop();
+  useLayoutEffect(() => {
+    resetScrollPosition();
   }, [pathname]);
+
+  useEffect(() => {
+    if (isReady) {
+      resetScrollPosition();
+    }
+  }, [isReady, pathname]);
 
   return null;
 }
