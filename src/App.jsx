@@ -104,9 +104,6 @@ function App() {
 
   const wikiIndex = useMemo(() => buildWikiIndex(allData), [allData]);
 
-
-
-
   if (loading) {
     return (
       <div className="flex h-svh items-center justify-center gap-3 font-[PapyrusWeb] text-6xl">
@@ -119,6 +116,7 @@ function App() {
   return (
     <>
       <Header allData={allData} />
+
       <ScrollToTop isReady={!loading} />
       <AnimatePresence mode="wait">
         <Routes location={location} key={location.pathname}>
