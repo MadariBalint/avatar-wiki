@@ -129,132 +129,139 @@ function Header({ allData }) {
   }, [openSearch]);
 
   return (
-    <nav className="fixed w-full flex flex-col top-0 z-50">
+    <nav className="sticky top-0 z-50 flex w-full flex-col">
       <div className="relative">
-
-      <div className={`flex flex-row w-full h-32 md:h-24 lg:h-20 transition-all duration-300  items-center justify-between bg-sky-100 `}>
-        <div className="h-full max-w-[50%] md:max-w-[30%]">
-          <Link to="/">
-            <img
-              src={logo}
-              alt="logo"
-              className="h-full max-h-full w-auto object-contain drop-shadow-[0_-3px_3px_rgba(0,0,0,0.35)] md:ml-3 lg:ml-10"
-            />
-          </Link>
-        </div>
-        <div className="mr-12 ml-auto flex flex-row gap-3 md:hidden">
-          <button
-            className="p-2"
-            onClick={() => setOpenSearch((prev) => !prev)}
-          >
-            {openSearch && !open ? <X /> : <Search />}
-          </button>
-          <button className="p-2" onClick={() =>setOpen((prev) => !prev)}>
-            {open ? <X /> : <MenuIcon />}
-          </button>
-        </div>
-
-        <div className="hidden md:block md:flex md:grow md:justify-end md:gap-5">
-          <div ref={searchRef} className="relative grow">
-            <input
-              type="text"
-              value={query}
-              placeholder="Search the wiki..."
-              onChange={(e) => {
-                const value = e.target.value;
-                setQuery(value);
-                setIsSearchOpen(value.trim().length > 0);
-              }}
-              onFocus={() => {
-                setIsInFocus(true);
-                if (query.trim()) setIsSearchOpen(true);
-              }}
-              onBlur={() => {
-                setIsInFocus(false);
-              }}
-              className={`w-full px-3 py-1 border border-2 outline-none ${isInFocus === true ? "focus:border-sky-600/70" : "border-sky-600/10"} ${isSearchOpen === false ? "rounded-lg" : "rounded-t-lg"}`}
+        <div
+          className={`flex h-32 w-full flex-row items-center justify-between bg-sky-100 transition-all duration-300 md:h-24 lg:h-20`}
+        >
+          <div className="h-full max-w-[50%] md:max-w-[30%]">
+            <Link to="/">
+              <img
+                src={logo}
+                alt="logo"
+                className="h-full max-h-full w-auto object-contain drop-shadow-[0_-3px_3px_rgba(0,0,0,0.35)] md:ml-3 lg:ml-10"
               />
-            {isSearchOpen && query.trim() && (
-              <div
-                className={`absolute top-full left-0 border border-2 border-t-0 px-3 py-1 outline-none ${isInFocus === true ? "border-sky-600/70" : "border-sky-600/10"} w-full rounded-b-lg bg-sky-100`}
-              >
-                {filteredResults.length > 0 ? (
-                  filteredResults.map((result) => (
-                    <Link
-                    key={result.id}
-                    to={`/${result.id}`}
-                    onClick={() => {
-                      setQuery("");
-                      setIsSearchOpen(false);
-                    }}
-                    >
-                      <div>{result.label}</div>
-                      <small>{result.type}</small>
-                    </Link>
-                  ))
-                ) : (
-                  <div>No results found</div>
-                )}
-              </div>
-            )}
+            </Link>
           </div>
-          <Menu />
-        </div>
-      </div>
-      {open && (
-        <div ref={menuRef} className="md:hidden absolute top-full left-0 w-full pt-5  bg-sky-100 grow">
-          <Menu closeMenu={() => setOpen(false)} />
-        </div>
-      )}
-      {openSearch && !open && (
-        <div ref={searchRef} className=" absolute top-full left-0 w-full pt-5 md:hidden pb-5  bg-sky-100">
-          <div className="relative mx-15 ">
-            <input
-              type="text"
-              value={query}
-              placeholder="Search the wiki..."
-              onChange={(e) => {
-                const value = e.target.value;
-                setQuery(value);
-                setIsSearchOpen(value.trim().length > 0);
-              }}
-              onFocus={() => {
-                setIsInFocus(true);
-                if (query.trim()) setIsSearchOpen(true);
-              }}
-              onBlur={() => {
-                setIsInFocus(false);
-              }}
-              className={`w-full px-3 py-1 border border-2 outline-none ${isInFocus === true ? "focus:border-sky-600/70" : "border-sky-600/10"} ${isSearchOpen === false ? "rounded-lg" : "rounded-t-lg"}`}
+          <div className="mr-12 ml-auto flex flex-row gap-3 lg:hidden">
+            <button
+              className="p-2"
+              onClick={() => setOpenSearch((prev) => !prev)}
+            >
+              {openSearch && !open ? <X /> : <Search />}
+            </button>
+            <button className="p-2" onClick={() => setOpen((prev) => !prev)}>
+              {open ? <X /> : <MenuIcon />}
+            </button>
+          </div>
+
+          <div className="hidden lg:block lg:flex lg:grow lg:justify-end lg:gap-5">
+            <div ref={searchRef} className="relative grow">
+              <input
+                type="text"
+                value={query}
+                placeholder="Search the wiki..."
+                onChange={(e) => {
+                  const value = e.target.value;
+                  setQuery(value);
+                  setIsSearchOpen(value.trim().length > 0);
+                }}
+                onFocus={() => {
+                  setIsInFocus(true);
+                  if (query.trim()) setIsSearchOpen(true);
+                }}
+                onBlur={() => {
+                  setIsInFocus(false);
+                }}
+                className={`w-full border border-2 px-3 py-1 outline-none ${isInFocus === true ? "focus:border-sky-600/70" : "border-sky-600/10"} ${isSearchOpen === false ? "rounded-lg" : "rounded-t-lg"}`}
               />
-            {isSearchOpen && query.trim() && (
-              <div
-                className={`absolute top-full left-0 border border-2 border-t-0 px-3 py-1 outline-none ${isInFocus === true ? "border-sky-600/70" : "border-sky-600/10"} w-full rounded-b-lg bg-sky-100`}
-              >
-                {filteredResults.length > 0 ? (
-                  filteredResults.map((result) => (
-                    <Link
-                      key={result.id}
-                      to={`/${result.id}`}
-                      onClick={() => {
-                        setQuery("");
-                        setIsSearchOpen(false);
-                        setOpenSearch(false);
-                      }}
+              {isSearchOpen && query.trim() && (
+                <div
+                  className={`absolute top-full left-0 border border-2 border-t-0 px-3 py-1 outline-none ${isInFocus === true ? "border-sky-600/70" : "border-sky-600/10"} w-full rounded-b-lg bg-sky-100`}
+                >
+                  {filteredResults.length > 0 ? (
+                    filteredResults.map((result) => (
+                      <Link
+                        key={result.id}
+                        to={`/${result.id}`}
+                        onClick={() => {
+                          setQuery("");
+                          setIsSearchOpen(false);
+                        }}
                       >
-                      <div>{result.label}</div>
-                      <small>{result.type}</small>
-                    </Link>
-                  ))
-                ) : (
-                  <div>No results found</div>
-                )}
-              </div>
-            )}
+                        <div>{result.label}</div>
+                        <small>{result.type}</small>
+                      </Link>
+                    ))
+                  ) : (
+                    <div>No results found</div>
+                  )}
+                </div>
+              )}
+            </div>
+            <Menu />
           </div>
         </div>
-      )}
+        {open && (
+          <div
+            ref={menuRef}
+            className="absolute top-full left-0 w-full grow bg-sky-100 pt-5 lg:hidden"
+          >
+            <Menu closeMenu={() => setOpen(false)} />
+          </div>
+        )}
+        {openSearch && !open && (
+          <div
+            ref={searchRef}
+            className="absolute top-full left-0 w-full bg-sky-100 pt-5 pb-5 lg:hidden"
+          >
+            <div className="relative mx-15">
+              <input
+                type="text"
+                value={query}
+                placeholder="Search the wiki..."
+                onChange={(e) => {
+                  const value = e.target.value;
+                  setQuery(value);
+                  setIsSearchOpen(value.trim().length > 0);
+                }}
+                onFocus={() => {
+                  setIsInFocus(true);
+                  if (query.trim()) setIsSearchOpen(true);
+                }}
+                onBlur={() => {
+                  setIsInFocus(false);
+                }}
+                className={`w-full border border-2 px-3 py-1 outline-none ${isInFocus === true ? "focus:border-sky-600/70" : "border-sky-600/10"} ${isSearchOpen === false ? "rounded-lg" : "rounded-t-lg"}`}
+              />
+              {isSearchOpen && query.trim() && (
+                <div
+                  className={`absolute top-full left-0 border border-2 border-t-0 px-3 py-1 outline-none ${isInFocus === true ? "border-sky-600/70" : "border-sky-600/10"} w-full rounded-b-lg bg-sky-100`}
+                >
+                  {filteredResults.length > 0 ? (
+                    filteredResults.map((result) => (
+                      <Link
+                        key={result.id}
+                        to={`/${result.id}`}
+                        onClick={() => {
+                          setQuery("");
+                          setIsSearchOpen(false);
+                          setOpenSearch(false);
+                        }}
+                      >
+                        <div>{result.label}</div>
+                        <small>{result.type}</small>
+                      </Link>
+                    ))
+                  ) : (
+                    <div>No results found</div>
+                  )}
                 </div>
+              )}
+            </div>
+          </div>
+        )}
+      </div>
     </nav>
   );
 }
