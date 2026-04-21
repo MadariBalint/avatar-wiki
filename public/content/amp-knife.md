@@ -1,0 +1,7 @@
+The _**AMP suit knife**_ is a tool used by [AMP suit](/amp) drivers for clearing dense underbrush, but it can also be used as a close-quarters weapon.
+
+## Description
+
+This form of device, which is essentially a large knife, was a deliberate design choice by the manufacturer; early prototypes with this admittedly comic shape proved very popular with defense buyers and AMP suit drivers. As a consequence, the more practical "square" and "V" cutters were eventually phased out in favor of the large knife shape.
+
+Originally fixed to the underside of the AMP suit forearm, this was later changed to modular "free" use. This proved safer during nonlethal riot control, when the AMP suit used by police did not include a large, fixed cutting edge. On [[Pandora]], the ceramic blade is used primarily as a path-clearing tool when the AMP suit is moving through dense bush environments, but can be employed as a self-defense weapon. Quaritch uses one of these knives to kill a [[thanator]] ridden by [[Neytiri]], and while fighting [[Jake Sully]] near the end of the film. They are also seen used when a group of charging [[hammerhead titanothere]]s attack the [[SecOps]] ground forces in the final battle.

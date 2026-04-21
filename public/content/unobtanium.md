@@ -1,0 +1,3 @@
+_**Unobtanium**_ (pronounced un-ob-tain-ee-um), also known as **Ubh-310**, is a highly valuable rare-earth compound found on the exo-moon Pandora that is formed volcanically. It is element 120 on the Periodic Table.
+
+Humans mine unobtanium for energy conduction, as the RDA suppresses the development of alternatives on [[Earth]]. Additionally, excessive mineral mining in Africa exhausted the planet's natural resources. By the 2140s, Earth is facing an energy crisis integral to feeding its population of 20 billion and powering its cities. Unobtanium is necessary for a wide variety of uses.

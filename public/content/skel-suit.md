@@ -1,0 +1,14 @@
+The _**Skel Suit**_ or **EXO-32 Light Mobility Platform** is a lightweight powered exoskeleton used by [[Sec-Ops]] infantrymen of the [Resources Development Administration](/rda). They appear in [[Avatar: The Way of Water]], [[Avatar: Fire and Ash]] and From the Ashes.
+They are not to be confused with the older, much larger and heavily built [AMP Suit](/amp). It is designed as a multipurpose strength enhancer for industrial and military applications and was developed to be safely operated around unprotected humans.
+
+## Specifications
+
+An ultralight mobility platform akin to the civilian Pandora Utility Suit, the Skel Suit has an minimalistic, skeletonized design and is more akin to a motorized stilt-walker than previous models of human-piloted mech suits. The Skel Suit boasts an automated collision-avoidance system, which makes it an ideal piece of equipment for the RDA colonization effort.
+
+Unlike the AMP suit, which is heavily armored, bulkier, with a fully enclosed cockpit, the Skel Suit is incredibly stripped down, which means that a Skel Suit operator would sacrifice defense for speed and agility. Despite its stripped down nature, the Skel Suit still enhances the human operator to be as tall, strong and fast as any [[Na'vi]].
+
+The Skel Suit allows the average RDA soldier to stand at the same height as a Na'vi or avatar, as well as allowing [[Bridgehead]]'s non-Recom forces to comfortably use weaponry designed for the larger frame of the RDA's successor to the [[Avatar Program]].
+
+When walking, force feedback is channeled from foot sensors to the operator's stirrups. The high strength carbon fiber in the legs are used extensively to reduce weight, while the semi-prehensile feet can grasp terrain and roots for aggressive forest running. On the SeaDragon, the internal structure of these marine 'Sea Skel' differ slightly as they are made from non-corroding stainless steel.
+
+Skel Suit operators fire their rifles in a point shooting "hip fire" fashion as they cannot properly shoulder their weapons like an Avatar, Recom or Na'vi would due to the suit's arm proportions, shoulder joint height, and internal human body positioning. The Skel Suit thus renders rifle stocks useless, and they are removed on Skel operators long-guns to allow operators to maneuver their firearms more freely and shoot at advanced angles afforded to them by their long arm reach. To make the weapons accurate in this configuration and shooting position, camera sights are equipped on Skel weapons which link to smart targeting technology in the respective operator's [[Exopack]] HUD, allowing them to find a proper line of sight and aim digitally. What would be traditionally a less-stable point shooting position is compensated for and enhanced by the self-stabilizing and recoil absorbing design of the exoskeleton itself giving Skel Suit operators aim on par or above that of traditional shooters.

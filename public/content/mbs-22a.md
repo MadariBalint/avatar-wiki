@@ -1,0 +1,9 @@
+The _**MBS-22A Sentry Gun**_ is the turret of choice for perimeter defense on [[Hell's Gate]], as well as on the tops of [[AMP Defender]]s.
+
+## Versions
+
+**MBS-22A Automated Sentry Gun** The MBS-22A's primary function on [[Pandora]] has been as an automated perimeter defense sentry gun. Situated on towers around Hell's Gate, this weapon can defend against both air and ground attacks at up to 488 meters. It has proven remarkably effective against predatory creatures that stray too close to the compound. The weapon uses a tri-rail system, much like the [[MBS-9M Hydra]], that incorporates three barrels in alternate uses to allow each barrel to cool momentarily. The MBS-22A features 20mm ball-bearings or needles as ballistics, firing at 6000 rounds per minute collectively (2000 rpm per barrel). It also has a selective fire control that when commanded via remote control, can fire either sequentially, in pulses, or single barrel automatic.
+
+**RDA Turret Machine Gun** is a manned high-explosive, heavy-duty superweapon used by the [[RDA]] that first appears in [[Avatar: The Game]]. It is usually situated on towers near RDA bases and camps. It uses a 2.2 meter long ammunitions belt of solid brass-titanium "needle" bullets. Any living creature that gets to close to the base is dispatched by the Turret. The Turret uses a huge dark silver and red MBS-9M .50 Hydra weapon that utilizes superior gyroscoping precision infused with the CARB (Cellular Ammunition Rifle Base) system for gyroscopic accuracy.
+
+**Automatic Turret MBS-22A** is an older unmanned version. Heavily armored, automated versions were in use some time prior to 2152. The armor was resistant to [[Na'vi]] weaponry. However, the sensor ring on the top front part of the turret was vulnerable to hunting arrows. It's primary function is as an automated perimeter defense sentry gun. This weapon can defend both air and land attacks at a range of up to 500 meters.

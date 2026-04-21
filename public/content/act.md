@@ -1,0 +1,5 @@
+The _**Armored Command Transport**_ (ACT) is a high protection, all-terrain, six-wheel drive transport for military officers and high-ranking [[RDA]] officials. The ACT is favored by General Ardmore when undertaking inspections at [[Bridgehead]].
+
+## Specifications/Overview
+
+The ACT is self driving and automated, and has an onboard computer which manages system-control and driving functions, featuring a swivel camera and sensor mast for navigation. It is highly maneuverable, with omnidirectional wheel shift technology that allows for full 90 degrees of rotation per wheel. It can drive both forward and sideways, and adapt its ride height, suspension travel, and shock absorption depending on terrain. Because of this, it excels in dense environments, both urban and natural. ACT's are used at bridgehead to check on construction and perimeter defense points, with its advanced tech allowing it to avoid collisions with pedestrians or equipment.
