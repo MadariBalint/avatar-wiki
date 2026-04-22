@@ -21,9 +21,10 @@ function Explore() {
     <>
       <Section>
         <SectionHeading title={`Explore`} />
-        <div className="grid grid-cols-6 justify-center justify-items-center gap-y-3 py-3 lg:grid-cols-[repeat(6,max-content)] lg:gap-x-3">
-          <Link className="transition-all duration-250 hover:scale-115" to="/avatar">
+        <div className=" grid grid-cols-6 justify-center justify-items-center gap-y-3 py-3 lg:grid-cols-[repeat(6,max-content)] lg:gap-x-3">
+          <Link className="transition-all duration-250 hover:scale-115  " to="/avatar">
             <ExploreItem file={avatarLogo} />
+            
           </Link>
           <Link className="transition-all duration-250 hover:scale-115" to="/avatar-twow">
             <ExploreItem file={avatarTwowLogo} />

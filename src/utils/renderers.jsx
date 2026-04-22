@@ -103,9 +103,20 @@ export function renderHomeHistory(homeHistory, data) {
 
 export function renderFamily(members, data) {
   let needsLink;
+  if(typeof members === "string"){
+    needsLink = data.some((e)=> e.id === members && e.hasPage === true)
+    return (<li>
+      {needsLink && (
+        <InternalLink href={members} >
+          {data.find((el) => el.id === members).name}
+        </InternalLink>
+      )}
+      {!needsLink && data.find((el)=> el.id === members).name}
+    </li>)
+  }
+
   return members.map((member) => {
-    needsLink = data.some((e) => e.id === member.id && e.hasPage === true);
-    console.log(needsLink);
+    let needsLink = data.some((e) => e.id === member.id && e.hasPage === true);
     return (
       <li key={member.id}>
         {needsLink && (

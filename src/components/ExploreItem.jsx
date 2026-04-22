@@ -1,6 +1,6 @@
 function ExploreItem({ file }) {
   return (
-    <div>
+    <div className="relative">
       <img className="rounded-full" src={file} alt={`${file}`} />
     </div>
   );

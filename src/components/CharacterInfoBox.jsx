@@ -116,6 +116,10 @@ function CharacterInfoBox({ data = null, allData }) {
               allData={allData}
             />
           )}
+          {data.mateId && (
+            <CharacterInfoBoxRow label={"Mate"} info={data.mateId} renderInfo={renderFamily} allData={allData} />
+          )}
+          {data.childrenIds && <CharacterInfoBoxRow label={"Children"} info={data.childrenIds} renderInfo={renderFamily} allData={allData} />}
           {data.siblingIds && (
             <CharacterInfoBoxRow
               label={"Siblings"}
