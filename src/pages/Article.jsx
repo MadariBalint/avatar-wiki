@@ -9,6 +9,7 @@ import Spinner from "../components/Spinner";
 import FaunaInfoBox from "../components/FaunaInfoBox";
 import FloraInfoBox from "../components/FloraInfoBox";
 import LocationInfoBox from "../components/LocationInfoBox";
+import RdaInfoBox from "../components/RdaInfoBox";
 
 function Article({ allData, wikiIndex }) {
   const { slug } = useParams();
@@ -93,6 +94,9 @@ function Article({ allData, wikiIndex }) {
         )}
         {infoData?.articleType === "locations" && (
           <LocationInfoBox data={infoData} allData={allData} />
+        )}
+        {infoData?.articleType === "rda" && (
+          <RdaInfoBox data={infoData} allData={allData} />
         )}
       </div>
       <div className="px-10 md:px-0 md:pt-1">

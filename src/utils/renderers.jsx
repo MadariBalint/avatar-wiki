@@ -322,3 +322,71 @@ export function renderResidents(residents, data) {
       );
   });
 }
+
+export function renderOrigin (creators, data) {
+  let needsLink
+
+  return creators.map((el) => {
+    needsLink = data.some((e)=> (e.id === el && e.hasPage))
+    let creator = data.find((e)=> e.id === el)
+    if(creator) return (
+      <li key={creator.id}>
+        {needsLink && <InternalLink href={creator.id}>{creator.name}</InternalLink>}
+        {!needsLink && creator.name }
+      </li>
+    )
+    return (
+      <li key={el}>
+        {el}
+      </li>
+    )
+    
+   
+  })
+
+}
+
+
+export function renderArmament (armaments, data) {
+let needsLink
+
+return armaments.map((arm) => {
+  needsLink = data.some(el => el.id === arm && el.hasPage)
+  let armament = data.find(e => e.id === arm)
+
+  if(!armament) return (
+    <li key={arm}>
+      {armament}
+    </li>
+  )
+
+  return (
+    <li key={armament.id}>
+      {needsLink && <InternalLink href={armament.id}>{armament.name}</InternalLink>}
+      {!needsLink && armament.id}
+    </li>
+  )
+})
+
+}
+
+export function renderType(type) {
+  let types = {
+    amp : "AMP",
+    apc : "APC",
+    smg : "Submachine Gun",
+    gl : "Grenade Launcher"
+  }
+
+  if(Object.keys(types).includes(type)) return (
+    <li>
+      {types[type]}
+    </li>
+  )
+
+  return (
+    <li>
+      {type[0].toUpperCase() + type.slice(1)}
+    </li>
+  )
+}

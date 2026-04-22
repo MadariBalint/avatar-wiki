@@ -117,7 +117,7 @@
     "type": "material",
     "categories": ["material"],
     "createdBy": ["Naturally produced by the Tulkun"],
-    "usedBy": "human",
+    "usedBy": ["human"],
     "purpose": "Stop human aging",
     "firstSeen": "avatar-twow"
   },
@@ -162,7 +162,7 @@
     "type": "exosuit",
     "categories": ["weapon", "vehicle"],
     "createdBy": ["rda"],
-    "usedBy": "human",
+    "usedBy": ["human"],
     "model": "Mitsubishi",
     "usages": [
       "Traversing Pandora",
