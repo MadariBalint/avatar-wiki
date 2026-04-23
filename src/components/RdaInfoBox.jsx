@@ -20,7 +20,7 @@ function RdaInfoBox ({data = null, allData}) {
       </div>
       <div className="mt-1 w-full divide-y-2 divide-solid divide-sky-400 rounded-2xl border-2 border-sky-400 p-2">
         <div className="flex justify-center rounded-t-xl bg-sky-700/30 text-lg">
-          {data.categories.includes("vehicle") && "Machine information"}
+          {(data.categories.includes("vehicle") || data.categories.includes("life-support")) && "Machine information" || data.categories.includes("weapon") && "Weapon information" || data.categories.includes("material") && "Item information"}
         </div>
         <div className="space-y-2 divide-y-1 divide-sky-400">
           {data.createdBy && (
@@ -51,7 +51,7 @@ function RdaInfoBox ({data = null, allData}) {
           )}
           
         </div>
-        <div className="flex justify-center rounded-t-xl bg-sky-700/30 text-lg">
+        <div className="flex justify-center bg-sky-700/30 text-lg">
           Behind the scenes
         </div>
         <div className="space-y-2 divide-y-1 divide-sky-400">

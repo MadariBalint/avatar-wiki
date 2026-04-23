@@ -356,7 +356,7 @@ return armaments.map((arm) => {
 
   if(!armament) return (
     <li key={arm}>
-      {armament}
+      {arm}
     </li>
   )
 

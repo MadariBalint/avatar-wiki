@@ -36,7 +36,7 @@ function FloraInfoBox({ data = null, allData }) {
             <FloraInfoBoxRow label={"Height"} info={data.height} />
           )}
         </div>
-        <div className="flex justify-center rounded-t-xl bg-sky-700/30 text-lg">
+        <div className="flex justify-center bg-sky-700/30 text-lg">
           Behind the scenes
         </div>
         <div className="space-y-2 divide-y-1 divide-sky-400">

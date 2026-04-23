@@ -41,7 +41,7 @@ function LocationInfoBox({ data = null, allData }) {
             />
           )}
         </div>
-        <div className="flex justify-center rounded-t-xl bg-sky-700/30 text-lg">
+        <div className="flex justify-center bg-sky-700/30 text-lg">
           Behind The Scenes
         </div>
         <div className="space-y-2 divide-y-1 divide-sky-400">

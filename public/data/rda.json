@@ -160,7 +160,7 @@
     "hasPage": true,
     "name": "Combat Exo",
     "type": "exosuit",
-    "categories": ["weapon", "vehicle"],
+    "categories": ["vehicle", "weapon"],
     "createdBy": ["rda"],
     "usedBy": ["human"],
     "model": "Mitsubishi",
@@ -279,7 +279,7 @@
     "hasPage": true,
     "name": "Skel Suit",
     "type": "exosuit",
-    "categories": ["weapon", "vehicle"],
+    "categories": ["vehicle","weapon"],
     "createdBy": ["Ukii"],
     "usedBy": ["rda", "secops"],
     "usages": [

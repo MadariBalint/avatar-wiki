@@ -113,6 +113,7 @@ function App() {
     );
   }
 
+
   return (
     <>
       <Header allData={allData} />
@@ -218,6 +219,7 @@ function App() {
           />
         </Routes>
       </AnimatePresence>
+      
     </>
   );
 }
