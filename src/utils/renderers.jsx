@@ -126,7 +126,7 @@ export function renderFamily(members, data) {
             {data.find((el) => el.id === member.id).name}{data.find((el) => el.id === member.id).status === "Deceased" && " †"}
           </InternalLink>
         )}
-        {!needsLink && `${(data.find((el) => el.id === member.id).name)}${data.find((el) => el.id === member.id).status === "Deceased" && " †"}`}
+        {!needsLink && `${(data.find((el) => el.id === member.id).name)}${data.find((el) => el.id === member.id).status === "Deceased" ? " †" : ""}`}
         <InfoBrackets>{`${member.order ? member.order + " " : ""}${member.relation ? member.relation : ""}`}</InfoBrackets>
       </li>
     );
