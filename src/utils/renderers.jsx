@@ -108,7 +108,7 @@ export function renderFamily(members, data) {
     return (<li>
       {needsLink && (
         <InternalLink href={members} >
-          {data.find((el) => el.id === members).name}
+          {data.find((el) => el.id === members).name}{data.find((el) => el.id === members).status === "Deceased" && " †"}
         </InternalLink>
       )}
       {!needsLink && data.find((el)=> el.id === members).name}
@@ -117,14 +117,16 @@ export function renderFamily(members, data) {
 
   return members.map((member) => {
     let needsLink = data.some((e) => e.id === member.id && e.hasPage === true);
+    console.log(member)
     return (
       <li key={member.id}>
         {needsLink && (
+          
           <InternalLink href={member.id}>
-            {data.find((el) => el.id === member.id).name}
+            {data.find((el) => el.id === member.id).name}{data.find((el) => el.id === member.id).status === "Deceased" && " †"}
           </InternalLink>
         )}
-        {!needsLink && data.find((el) => el.id === member.id).name}
+        {!needsLink && `${(data.find((el) => el.id === member.id).name)}${data.find((el) => el.id === member.id).status === "Deceased" && " †"}`}
         <InfoBrackets>{`${member.order ? member.order + " " : ""}${member.relation ? member.relation : ""}`}</InfoBrackets>
       </li>
     );

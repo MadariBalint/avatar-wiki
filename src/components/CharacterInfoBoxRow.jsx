@@ -1,4 +1,4 @@
-function CharacterInfoBoxRow({ label, info, renderInfo, allData }) {
+function CharacterInfoBoxRow({ label, info, renderInfo, allData}) {
   const isList = Array.isArray(info)
     ? info.length > 1
     : info && typeof info === "object"
@@ -27,7 +27,7 @@ function CharacterInfoBoxRow({ label, info, renderInfo, allData }) {
 
             )}
           </ul>
-        ) : (<span>{info}</span>
+        ) : (<span>{info}{info === "Deceased" && " †"}{info === "Male" && " ♂"}{info === "Female" && " ♀"}</span>
         )}
       </div>
     </div>

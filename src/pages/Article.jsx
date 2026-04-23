@@ -78,8 +78,11 @@ function Article({ allData, wikiIndex }) {
 
   const infoData = allData.find((item) => item.id === slug);
   return (
-    <div className="flex flex-col md:mx-auto md:block md:max-w-3xl lg:max-w-5xl">
-      <div className="lg:md-10 mb-10 flex justify-center font-[verdana] md:float-right md:ml-5">
+    <div className="flex flex-col min-h-screen md:mx-auto md:block md:max-w-3xl lg:max-w-5xl md:px-3">
+      <div className="hidden md:flex text-4xl font-[PapyrusWeb] mt-3 md:mt-5 mb-8">
+        {infoData.title || infoData.name || infoData.humanName || infoData.naviName}
+      </div>
+      <div className="lg:md-10 mb-10 flex justify-center font-[verdana] md:float-right md:ml-5 ">
         {infoData?.articleType === "franchise" && (
           <FranchiseInfoBox data={infoData} allData={allData} />
         )}

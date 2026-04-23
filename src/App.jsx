@@ -1,5 +1,6 @@
 import { Route, Routes, useLocation } from "react-router-dom";
 import { useEffect, useMemo, useState } from "react";
+import { AnimatePresence } from "motion/react";
 
 import Home from "./pages/Home";
 import Characters from "./pages/Characters";
@@ -20,7 +21,6 @@ import Avatars from "./pages/Avatars";
 import Humans from "./pages/Humans";
 import Weapons from "./pages/Weapons";
 import Vehicles from "./pages/Vehicles";
-import { AnimatePresence } from "motion/react";
 
 const alphabet = [
   "A",

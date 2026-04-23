@@ -57,7 +57,7 @@ function CharacterInfoBox({ data = null, allData }) {
           )}
           {data.age && <CharacterInfoBoxRow label={"Age"} info={data.age} />}
           {data.status && (
-            <CharacterInfoBoxRow label={"Status"} info={data.status} />
+            <CharacterInfoBoxRow label={"Status"} info={data.status} deceased={data.status} />
           )}
           {data.homeHistory && (
             <CharacterInfoBoxRow
