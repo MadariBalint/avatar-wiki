@@ -15,6 +15,7 @@ import Spinner from "./components/Spinner";
 
 import { buildWikiIndex } from "./utils/wikiIndex";
 import ScrollToTop from "./components/ScrollToTop";
+import ScrollToTopButton from "./components/ScrollToTopButton";
 import PageTransition from "./components/PageTransition";
 import Games from "./pages/Games";
 import Avatars from "./pages/Avatars";
@@ -119,6 +120,7 @@ function App() {
       <Header allData={allData} />
 
       <ScrollToTop isReady={!loading} />
+      <ScrollToTopButton />
       <AnimatePresence mode="wait">
         <Routes location={location} key={location.pathname}>
           <Route
