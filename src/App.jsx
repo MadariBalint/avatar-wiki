@@ -52,6 +52,20 @@ const alphabet = [
   "Z",
 ];
 
+const routeTitles = {
+  "/": "Avatar Wiki",
+  "/category:characters": "Characters | Avatar Wiki",
+  "/category:navi": "Na'vi | Avatar Wiki",
+  "/category:rda": "RDA | Avatar Wiki",
+  "/category:flora": "Flora | Avatar Wiki",
+  "/category:fauna": "Fauna | Avatar Wiki",
+  "/category:games": "Games | Avatar Wiki",
+  "/category:avatars": "Avatars | Avatar Wiki",
+  "/category:humans": "Humans | Avatar Wiki",
+  "/category:weapons": "Weapons | Avatar Wiki",
+  "/category:vehicles": "Vehicles | Avatar Wiki",
+};
+
 function App() {
   const [allData, setAllData] = useState([]);
 
@@ -104,6 +118,33 @@ function App() {
   }, []);
 
   const wikiIndex = useMemo(() => buildWikiIndex(allData), [allData]);
+
+  useEffect(() => {
+    if (loading) {
+      document.title = "Avatar Wiki";
+      return;
+    }
+
+    if (routeTitles[location.pathname]) {
+      document.title = routeTitles[location.pathname];
+      return;
+    }
+
+    const currentEntry = allData.find((item) => `/${item.id}` === location.pathname);
+
+    if (!currentEntry) {
+      document.title = "Avatar Wiki";
+      return;
+    }
+
+    const pageTitle =
+      currentEntry.title ||
+      currentEntry.name ||
+      currentEntry.humanName ||
+      currentEntry.naviName;
+
+    document.title = pageTitle ? `${pageTitle} | Avatar Wiki` : "Avatar Wiki";
+  }, [allData, loading, location.pathname]);
 
   if (loading) {
     return (
