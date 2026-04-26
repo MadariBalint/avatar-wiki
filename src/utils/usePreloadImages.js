@@ -6,7 +6,10 @@ export default function usePreloadImages(data) {
   const [ready, setReady] = useState(false);
 
   useEffect(() => {
-    if (!data.length) return;
+    if (!data.length) {
+      setReady(true);
+      return;
+    }
 
     setReady(false);
     let cancelled = false;

@@ -13,6 +13,20 @@ import {
 
 function CharacterInfoBox({ data = null, allData }) {
   if (!data) return null;
+
+  function scrollToAgeSection() {
+    const ageSection = document.getElementById("age");
+
+    if (!ageSection) {
+      return;
+    }
+
+    ageSection.scrollIntoView({
+      behavior: "smooth",
+      block: "start",
+    });
+  }
+
   return (
     <aside className="flex w-80 flex-col items-center text-sm">
       <div className="mt-2 mb-1 flex w-full justify-center rounded-2xl border border-sky-600 bg-sky-800/40 p-2 text-xl">
@@ -55,9 +69,19 @@ function CharacterInfoBox({ data = null, allData }) {
               renderInfo={renderBorn}
             />
           )}
-          {data.age && <CharacterInfoBoxRow label={"Age"} info={data.age} />}
+          {data.age && (
+            <CharacterInfoBoxRow
+              label={"Age"}
+              info={data.age}
+              onClick={data.age === "See list of ages" ? scrollToAgeSection : undefined}
+            />
+          )}
           {data.status && (
-            <CharacterInfoBoxRow label={"Status"} info={data.status} deceased={data.status} />
+            <CharacterInfoBoxRow
+              label={"Status"}
+              info={data.status}
+              deceased={data.status}
+            />
           )}
           {data.homeHistory && (
             <CharacterInfoBoxRow
@@ -117,9 +141,21 @@ function CharacterInfoBox({ data = null, allData }) {
             />
           )}
           {data.mateId && (
-            <CharacterInfoBoxRow label={"Mate"} info={data.mateId} renderInfo={renderFamily} allData={allData} />
+            <CharacterInfoBoxRow
+              label={"Mate"}
+              info={data.mateId}
+              renderInfo={renderFamily}
+              allData={allData}
+            />
           )}
-          {data.childrenIds && <CharacterInfoBoxRow label={"Children"} info={data.childrenIds} renderInfo={renderFamily} allData={allData} />}
+          {data.childrenIds && (
+            <CharacterInfoBoxRow
+              label={"Children"}
+              info={data.childrenIds}
+              renderInfo={renderFamily}
+              allData={allData}
+            />
+          )}
           {data.siblingIds && (
             <CharacterInfoBoxRow
               label={"Siblings"}

@@ -719,7 +719,7 @@
       { "alias": "Tree-hugging-traitor", "note": "by Trudy" }
     ],
     "born": { "human": "2120", "avatar": "2154-05-20" },
-    "age": "51",
+    "age": "See list of ages",
     "status": "Alive",
     "homeHistory": [
       {
@@ -775,16 +775,110 @@
     "firstSeen": "avatar",
     "lastSeen": "avatar-faa"
   },
-  { "id": "sylwanin", "hasPage": false, "name": "Sylwanin", "status": "Deceased" },
+  {
+    "id": "sylwanin",
+    "hasPage": false,
+    "name": "Sylwanin",
+    "status": "Deceased"
+  },
   { "id": "ninat", "hasPage": false, "name": "Ninat" },
   { "id": "eywa", "hasPage": false, "name": "Eywa" },
   { "id": "mutxuk", "hasPage": false, "name": "Mutxuk" },
-  { "id": "miles-quaritch", "hasPage": true, "name": "Miles Quaritch" },
-  { "id": "paz-socorro", "hasPage": false, "name": "Paz Socorro", "status": "Deceased" },
+  {
+    "id": "miles-quaritch",
+    "hasPage": true,
+    "name": "Miles Quaritch",
+    "aliases": [
+      { "alias": "Colonel", "note": "by Recom Wainfleet and Jake" },
+      { "alias": "Boss", "note": "by Recom Wainfleet" },
+      { "alias": "Demon", "note": "by Neytiri" },
+      { "alias": "Dad", "note": "by Miles Socorro" },
+      { "alias": "Sky Man", "note": "by Varang" },
+      { "alias": "Son of a bitch", "note": "by Grace Augustine" }
+    ],
+    "born": { "human": "2096", "avatar": "2154" },
+    "died": { "human": "2154-08-23" },
+    "age": "51",
+    "status": "Alive",
+    "homeHistory": [
+      {
+        "locationId": "earth"
+      },
+      {
+        "locationId": "hells-gate"
+      },
+      {
+        "locationId": "bridgehead"
+      }
+    ],
+    "speciesIds": ["human", "avatar"],
+    "gender": "Male",
+    "height": {
+      "human": "5' 10\"",
+      "avatar": "9' 5\""
+    },
+    "skinColor": { "human": "white", "avatar": "blue" },
+    "hairColor": { "human": "brown", "avatar": "black" },
+    "eyeColor": { "human": "blue", "avatar": "yellow" },
+    "mateId": "varang",
+    "childrenIds": [{ "id": "spider", "relation": "son" }],
+    "occupations": [
+      { "occupation": "U.S. Marine Corps Officer", "note": "formerly" },
+      { "occupation": "SecOps Colonel", "note": "Commander of 1st Recom Unit" }
+    ],
+    "affiliations": [
+      { "id": "us-marine-corp", "status": "formerly" },
+      { "id": "rda", "departments": [{ "id": "secops" }] },
+      { "id": "mangkwan" }
+    ],
+    "portrayedBy": "Stephen Lang",
+    "firstSeen": "avatar",
+    "lastSeen": "avatar-faa"
+  },
+  {
+    "id": "paz-socorro",
+    "hasPage": false,
+    "name": "Paz Socorro",
+    "status": "Deceased"
+  },
   { "id": "kamun", "hasPage": false, "name": "Kamun" },
   { "id": "oma", "hasPage": false, "name": "Oma" },
   { "id": "popiti", "hasPage": false, "name": "Popiti" },
   { "id": "tuvat", "hasPage": false, "name": "Tuvat" },
-  { "id": "varang", "hasPage": true, "name": "Varang" },
+  {
+    "id": "varang",
+    "hasPage": true,
+    "name": "Varang",
+    "aliases": [
+      { "alias": "Cupcake", "note": "by Recom Quaritch" },
+      { "alias": "Baby", "note": "by Recom Quaritch" },
+      { "alias": "Little Missy", "note": "by Franes Ardmore" },
+      { "alias": "Witch", "note": "by Neytiri" },
+      { "alias": "Bitch", "note": "by Kiri" }
+    ],
+    "status": "Alive",
+    "homeHistory": [{ "locationId": "ash-village" }],
+    "speciesIds": ["navi"],
+    "gender": "Female",
+    "skinColor": { "navi": "blue" },
+    "hairColor": {
+      "navi": "black"
+    },
+    "eyeColor": { "navi": "yellow" },
+    "mateId": "miles-quaritch",
+    "occupations": [
+      {
+        "occupation": "Olo'eykte"
+      },
+      {
+        "occupation": "Tsahik"
+      }
+    ],
+    "affiliations": [{ "id": "mangkwan" }],
+    "bondedWith": ["Nightwraith"],
+    "portrayedBy": "Oona Chaplin",
+    "firstSeen": "avatar-faa",
+    "lastSeen": "avatar-faa"
+  },
   { "id": "bob", "hasPage": false, "name": "Bob" }
 ]

@@ -6,7 +6,11 @@ import Spinner from "../components/Spinner";
 import CategoryBox from "../components/CategoryBox";
 import InternalLink from "../components/InternalLink";
 
-import { itemVariants, containerVariants } from "../utils/helpers";
+import {
+  itemVariants,
+  containerVariants,
+  selectFeaturedEntries,
+} from "../utils/helpers";
 import usePreloadImages from "../utils/usePreloadImages";
 
 function Humans({ ABC }) {
@@ -15,11 +19,7 @@ function Humans({ ABC }) {
   const [loading, setLoading] = useState(true);
 
   const selectedData = useMemo(() => {
-    const pageData = data.filter((el) => el.hasPage);
-    if (!pageData.length) return [];
-
-    const shuffled = [...pageData].sort(() => Math.random() - 0.5);
-    return pageData.length <= 8 ? pageData : shuffled.slice(0, 8);
+    return selectFeaturedEntries(data);
   }, [data]);
 
   const imagesReady = usePreloadImages(selectedData);

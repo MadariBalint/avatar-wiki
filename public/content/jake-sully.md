@@ -6,6 +6,8 @@ Years later, Jake and Neytiri are parents to three biological children ([[Neteya
 
 Later on, Jake encounters two new Na'vi clans and becomes involved in a conflict with [[Varang]], the leader of the [[Mangkwan clan]].
 
+For a full breakdown of Jake's age across different periods and bodies, see the [list of ages](#age).
+
 ## Biography
 
 #### On Earth

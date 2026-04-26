@@ -36,18 +36,10 @@ function ScrollToTop({ isReady }) {
       resetScrollPosition();
     };
 
-    const handleVisibilityChange = () => {
-      if (document.visibilityState === "visible") {
-        resetScrollPosition();
-      }
-    };
-
     window.addEventListener("pageshow", handlePageShow);
-    document.addEventListener("visibilitychange", handleVisibilityChange);
 
     return () => {
       window.removeEventListener("pageshow", handlePageShow);
-      document.removeEventListener("visibilitychange", handleVisibilityChange);
 
       if ("scrollRestoration" in history) {
         history.scrollRestoration = previousScrollRestoration;
