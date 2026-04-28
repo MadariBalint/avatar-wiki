@@ -3,25 +3,22 @@ import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 
 function MediumFranchise() {
+  const [franchise, setFranchise] = useState([]);
 
-  const [franchise,setFranchise] = useState([])
-
-  useEffect(()=>{
-
-    async function loadFranchise(){
+  useEffect(() => {
+    async function loadFranchise() {
       try {
-        const res = await fetch("data/franchise.json")
-        const response = await res.json()
+        const res = await fetch("data/franchise.json");
+        const response = await res.json();
 
-        setFranchise(response)
+        setFranchise(response);
       } catch (err) {
-        console.error("Failed to load data", err)
-      } finally {
+        console.error("Failed to load data", err);
       }
     }
 
-    loadFranchise()
-  },[])
+    loadFranchise();
+  }, []);
   const movies = franchise.filter((el) => el.type === "movies");
   const games = franchise.filter((el) => el.type === "games");
   const comics = franchise.filter((el) => el.type === "comics");
@@ -87,7 +84,7 @@ function MediumFranchise() {
               className={
                 i === comics.length - 1 && comics.length % 2 === 1
                   ? "col-span-2 transition-all duration-150 hover:scale-105"
-                  : " transition-all duration-150 hover:scale-105"
+                  : "transition-all duration-150 hover:scale-105"
               }
             >
               <FranchiseElement

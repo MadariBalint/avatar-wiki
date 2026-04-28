@@ -3,25 +3,22 @@ import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 
 function MobileOnlyFranchise() {
-  const [franchise,setFranchise] = useState([])
+  const [franchise, setFranchise] = useState([]);
 
-  useEffect(()=>{
-
-    async function loadFranchise(){
+  useEffect(() => {
+    async function loadFranchise() {
       try {
-        const res = await fetch("data/franchise.json")
-        const response = await res.json()
+        const res = await fetch("data/franchise.json");
+        const response = await res.json();
 
-        setFranchise(response)
+        setFranchise(response);
       } catch (err) {
-        console.error("Failed to load data", err)
-      } finally {
+        console.error("Failed to load data", err);
       }
     }
 
-    loadFranchise()
-  },[])
-
+    loadFranchise();
+  }, []);
 
   const movies = franchise.filter((el) => el.type === "movies");
   const games = franchise.filter((el) => el.type === "games");
@@ -34,7 +31,11 @@ function MobileOnlyFranchise() {
           Movies:
         </div>
         {movies.map((movie) => (
-          <Link className="transition-all duration-150 hover:scale-105" key={movie.id} to={`/${movie.id}`}>
+          <Link
+            className="transition-all duration-150 hover:scale-105"
+            key={movie.id}
+            to={`/${movie.id}`}
+          >
             <FranchiseElement
               name={movie.id}
               fullTitle={movie.title}

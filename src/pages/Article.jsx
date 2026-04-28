@@ -39,7 +39,7 @@ function Article({ allData, wikiIndex }) {
         if (!isCancelled) {
           setRawMarkdown(text);
         }
-      } catch (error) {
+      } catch {
         if (!isCancelled) {
           setRawMarkdown("");
           setNotFound(true);
@@ -70,7 +70,7 @@ function Article({ allData, wikiIndex }) {
   if (notFound) {
     return (
       <div className="flex min-h-screen justify-center font-[PapyrusWeb] text-6xl/25">
-        <span className="text-center py-2">404 - Article not found</span>
+        <span className="py-2 text-center">404 - Article not found</span>
       </div>
     );
   }
@@ -78,11 +78,14 @@ function Article({ allData, wikiIndex }) {
 
   const infoData = allData.find((item) => item.id === slug);
   return (
-    <div className="flex flex-col min-h-screen md:mx-auto md:block md:max-w-3xl lg:max-w-5xl md:px-3">
-      <div className="hidden md:flex text-4xl font-[PapyrusWeb] mt-3 md:mt-5 mb-8">
-        {infoData.title || infoData.name || infoData.humanName || infoData.naviName}
+    <div className="flex min-h-screen flex-col md:mx-auto md:block md:max-w-3xl md:px-3 lg:max-w-5xl">
+      <div className="mt-3 mb-8 hidden font-[PapyrusWeb] text-4xl md:mt-5 md:flex">
+        {infoData.title ||
+          infoData.name ||
+          infoData.humanName ||
+          infoData.naviName}
       </div>
-      <div className="lg:md-10 mb-10 flex justify-center font-[verdana] md:float-right md:ml-5 ">
+      <div className="lg:md-10 mb-10 flex justify-center font-[verdana] md:float-right md:ml-5">
         {infoData?.articleType === "franchise" && (
           <FranchiseInfoBox data={infoData} allData={allData} />
         )}

@@ -1,22 +1,26 @@
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 
 import getCategoryBoxImageSrc from "./helpers";
 
 export default function usePreloadImages(data) {
-  const [ready, setReady] = useState(false);
+  const imageSources = useMemo(() => {
+    return data.map((el) => getCategoryBoxImageSrc(el, el.articleType));
+  }, [data]);
+
+  const imageSetKey = useMemo(() => {
+    return JSON.stringify(imageSources);
+  }, [imageSources]);
+
+  const [loadedImageSetKey, setLoadedImageSetKey] = useState(() => imageSetKey);
 
   useEffect(() => {
-    if (!data.length) {
-      setReady(true);
+    if (!imageSources.length || loadedImageSetKey === imageSetKey) {
       return;
     }
 
-    setReady(false);
     let cancelled = false;
 
-    const promises = data.map((el) => {
-      const src = getCategoryBoxImageSrc(el, el.articleType);
-
+    const promises = imageSources.map((src) => {
       return new Promise((resolve) => {
         const img = new Image();
         img.src = src;
@@ -30,12 +34,15 @@ export default function usePreloadImages(data) {
     });
 
     Promise.all(promises).then(() => {
-      if (!cancelled) setReady(true);
+      if (!cancelled) {
+        setLoadedImageSetKey(imageSetKey);
+      }
     });
 
     return () => {
       cancelled = true;
     };
-  }, [data]);
-  return ready;
+  }, [imageSetKey, imageSources, loadedImageSetKey]);
+
+  return imageSources.length === 0 || loadedImageSetKey === imageSetKey;
 }

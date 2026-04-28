@@ -1,19 +1,20 @@
 import { useEffect, useMemo, useRef, useState } from "react";
 import Menu from "./Menu";
 import { MenuIcon, Search, X } from "lucide-react";
-import { Link, useLocation } from "react-router-dom";
+import { Link } from "react-router-dom";
 import useLockBodyScroll from "../utils/useLockBodyScroll";
 
 import logo from "../assets/logo.webp";
 
 function Header({ allData }) {
   const [query, setQuery] = useState("");
-  const [isSearchOpen, setIsSearchOpen] = useState(false);
   const [isInFocus, setIsInFocus] = useState(false);
   const [open, setOpen] = useState(false);
   const [openSearch, setOpenSearch] = useState(false);
+  const hasQuery = query.trim().length > 0;
+  const isSearchOpen = hasQuery;
+
   const menuRef = useRef(null);
-  const location = useLocation();
 
   const searchRef = useRef(null);
 
@@ -28,26 +29,11 @@ function Header({ allData }) {
 
       const type = entry.articleType || entry.type || "article";
 
-      const searchableText = [
-        entry.title,
-        entry.name,
-        entry.humanName,
-        entry.naviName,
-        entry.id,
-        type,
-      ]
-        .filter(Boolean)
-        .join(" ")
-        .toLowerCase();
-
-      const hasPage = entry.hasPage;
-
       return {
         id: entry.id,
         label,
         type,
-        searchableText,
-        hasPage,
+        hasPage: entry.hasPage,
       };
     });
   }, [allData]);
@@ -96,6 +82,15 @@ function Header({ allData }) {
     );
   }, [query, searchRecords]);
 
+  function resetSearch({ closeMobile = false } = {}) {
+    setQuery("");
+    setIsInFocus(false);
+
+    if (closeMobile) {
+      setOpenSearch(false);
+    }
+  }
+
   useEffect(() => {
     function handleClickOutside(event) {
       if (menuRef.current && !menuRef.current.contains(event.target)) {
@@ -112,21 +107,6 @@ function Header({ allData }) {
     };
   }, [open]);
   useLockBodyScroll(open);
-
-  useEffect(() => {
-    setOpenSearch(false);
-    setIsSearchOpen(false);
-    setQuery("");
-    setIsInFocus(false);
-  }, [location.pathname]);
-
-  useEffect(() => {
-    if (!openSearch) {
-      setIsSearchOpen(false);
-      setQuery("");
-      setIsInFocus(false);
-    }
-  }, [openSearch]);
 
   return (
     <nav className="sticky top-0 z-50 flex w-full flex-col">
@@ -146,7 +126,13 @@ function Header({ allData }) {
           <div className="mr-12 ml-auto flex flex-row gap-3 lg:hidden">
             <button
               className="p-2"
-              onClick={() => setOpenSearch((prev) => !prev)}
+              onClick={() => {
+                if (openSearch) {
+                  resetSearch({ closeMobile: true });
+                } else {
+                  setOpenSearch(true);
+                }
+              }}
             >
               {openSearch && !open ? <X /> : <Search />}
             </button>
@@ -162,20 +148,17 @@ function Header({ allData }) {
                 value={query}
                 placeholder="Search the wiki..."
                 onChange={(e) => {
-                  const value = e.target.value;
-                  setQuery(value);
-                  setIsSearchOpen(value.trim().length > 0);
+                  setQuery(e.target.value);
                 }}
                 onFocus={() => {
                   setIsInFocus(true);
-                  if (query.trim()) setIsSearchOpen(true);
                 }}
                 onBlur={() => {
                   setIsInFocus(false);
                 }}
                 className={`w-full border border-2 px-3 py-1 outline-none ${isInFocus === true ? "focus:border-sky-600/70" : "border-sky-600/10"} ${isSearchOpen === false ? "rounded-lg" : "rounded-t-lg"}`}
               />
-              {isSearchOpen && query.trim() && (
+              {isSearchOpen && hasQuery && (
                 <div
                   className={`absolute top-full left-0 border border-2 border-t-0 px-3 py-1 outline-none ${isInFocus === true ? "border-sky-600/70" : "border-sky-600/10"} w-full rounded-b-lg bg-sky-100`}
                 >
@@ -185,8 +168,7 @@ function Header({ allData }) {
                         key={result.id}
                         to={`/${result.id}`}
                         onClick={() => {
-                          setQuery("");
-                          setIsSearchOpen(false);
+                          resetSearch();
                         }}
                       >
                         <div>{result.label}</div>
@@ -221,20 +203,17 @@ function Header({ allData }) {
                 value={query}
                 placeholder="Search the wiki..."
                 onChange={(e) => {
-                  const value = e.target.value;
-                  setQuery(value);
-                  setIsSearchOpen(value.trim().length > 0);
+                  setQuery(e.target.value);
                 }}
                 onFocus={() => {
                   setIsInFocus(true);
-                  if (query.trim()) setIsSearchOpen(true);
                 }}
                 onBlur={() => {
                   setIsInFocus(false);
                 }}
                 className={`w-full border border-2 px-3 py-1 outline-none ${isInFocus === true ? "focus:border-sky-600/70" : "border-sky-600/10"} ${isSearchOpen === false ? "rounded-lg" : "rounded-t-lg"}`}
               />
-              {isSearchOpen && query.trim() && (
+              {isSearchOpen && hasQuery && (
                 <div
                   className={`absolute top-full left-0 border border-2 border-t-0 px-3 py-1 outline-none ${isInFocus === true ? "border-sky-600/70" : "border-sky-600/10"} w-full rounded-b-lg bg-sky-100`}
                 >
@@ -244,9 +223,7 @@ function Header({ allData }) {
                         key={result.id}
                         to={`/${result.id}`}
                         onClick={() => {
-                          setQuery("");
-                          setIsSearchOpen(false);
-                          setOpenSearch(false);
+                          resetSearch({ closeMobile: true });
                         }}
                       >
                         <div>{result.label}</div>

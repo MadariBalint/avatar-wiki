@@ -130,7 +130,9 @@ function App() {
       return;
     }
 
-    const currentEntry = allData.find((item) => `/${item.id}` === location.pathname);
+    const currentEntry = allData.find(
+      (item) => `/${item.id}` === location.pathname
+    );
 
     if (!currentEntry) {
       document.title = "Avatar Wiki";
@@ -155,10 +157,9 @@ function App() {
     );
   }
 
-
   return (
     <>
-      <Header allData={allData} />
+      <Header key={location.pathname} allData={allData} />
 
       <ScrollToTop isReady={!loading} />
       <ScrollToTopButton />
@@ -262,7 +263,6 @@ function App() {
           />
         </Routes>
       </AnimatePresence>
-      
     </>
   );
 }
